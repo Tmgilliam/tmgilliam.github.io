@@ -1,0 +1,43 @@
+---
+slug: erp-transformations-ai-adoption
+title: ERP Transformations and AI Adoption
+authors: [tgilliam]
+tags: [erp, transformation, ai-adoption, data-quality]
+description: 'Draft—why ERP data quality and warehouse discipline determine whether AI adoption succeeds on operational data.'
+draft: true
+---
+
+:::info Draft
+
+This article is a **work in progress**. ERP examples use sanitized portfolio patterns—not client or employer case studies.
+
+:::
+
+AI adoption on ERP data is an **ERP transformation problem** wearing a model badge. If item master, scan timing, and costing layers are unreliable, the model will learn confident wrong answers.
+
+{/* truncate */}
+
+## Three foundations
+
+Before predictive or agentic layers:
+
+1. **Warehouse truth** — scan-at-event discipline, location master, exception reason codes ([Supply Chain and Warehouse](/docs/erp-transformation/supply-chain-and-warehouse))
+2. **Costing integrity** — FIFO layer rules and reconciliation ([FIFO and Inventory Costing](/docs/erp-transformation/fifo-and-inventory-costing))
+3. **Data quality gates** — ownership matrix and evidence bundles ([ERP Data Quality](/docs/erp-transformation/erp-data-quality))
+
+## Portfolio ML example (honest status)
+
+The public [erp-ai-delay-risk](https://github.com/Tmgilliam/erp-ai-delay-risk) repository explores delay-risk architecture—feature pipelines, evaluation, batch/API delivery patterns. It is **portfolio evidence**, not a claim of live production deployment. See [ERP Delay Risk](/docs/ai-ml-systems/erp-delay-risk) for boundaries.
+
+## Readiness before models
+
+Run the [AI Readiness Diagnostic](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit) on the specific operational decision you want to improve. If data readiness or evidence quality scores below critical floors, fix the ledger before tuning hyperparameters.
+
+## Forthcoming casebook
+
+The [BBI organization profile](https://github.com/Brilliant-Brainstorm-Intelligence-LLC) describes a forthcoming **ERP Transformation Casebook**—sanitized patterns across warehouse, costing, data quality, architecture, and adoption. This draft will expand when that material ships publicly.
+
+## Related reading
+
+- [ERP Transformation docs](/docs/erp-transformation/)
+- [Evidence Before Implementation](/blog/evidence-before-implementation)

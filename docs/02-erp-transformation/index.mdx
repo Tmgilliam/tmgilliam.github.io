@@ -1,0 +1,53 @@
+---
+title: ERP Transformation
+description: 'Sanitized architecture and operating patterns for mid-market ERP modernization—without client, employer, or confidential implementation details.'
+sidebar_position: 1
+tags: [erp, transformation, sage-100, portfolio-patterns]
+---
+
+# ERP Transformation
+
+Mid-market ERP programs fail quietly when inventory truth, costing logic, and warehouse discipline are treated as afterthoughts. This section documents **sanitized portfolio patterns**—architecture examples drawn from public methodology work, not claims about any specific client, employer, or live production deployment.
+
+:::info Portfolio architecture examples
+
+Language in this section uses representative mid-market ERP contexts (for example, **Sage 100**-class inventory and distribution operations). Patterns are labeled as **portfolio examples** unless explicitly tied to a public repository artifact.
+
+:::
+
+## Why ERP transformation appears in this portfolio
+
+ERP modernization is not only a software upgrade. It is a chain of dependent decisions:
+
+- Can warehouse transactions be trusted at scan time?
+- Does costing logic match how product actually moves?
+- Are master data definitions stable enough for reporting and automation?
+- Is there an evidence trail when numbers disagree?
+
+AI and analytics amplify whatever data quality already exists. These pages focus on the operational foundations that make downstream intelligence credible.
+
+## Topics in this section
+
+| Page                                                       | Focus                                                     |
+| ---------------------------------------------------------- | --------------------------------------------------------- |
+| [Supply Chain and Warehouse](./supply-chain-and-warehouse) | Receiving, putaway, pick/pack/ship, barcode discipline    |
+| [FIFO and Inventory Costing](./fifo-and-inventory-costing) | Layer integrity, valuation alignment, reconciliation      |
+| [ERP Data Quality](./erp-data-quality)                     | Master data, transaction hygiene, evidence for exceptions |
+
+## Forthcoming public casebook
+
+The [Brilliant Brainstorm Intelligence organization profile](https://github.com/Brilliant-Brainstorm-Intelligence-LLC) describes an **ERP Transformation Casebook** as a forthcoming sanitized collection of warehouse, costing, data-quality, architecture, and adoption patterns. Pages here preview that direction using public-safe language only.
+
+## Boundaries
+
+This section does **not**:
+
+- Name clients, employers, or confidential implementations
+- Claim SAP, Oracle, or industry-specific manufacturing deployments unless explicitly labeled and publicly evidenced
+- Present illustrative scenarios as audited production outcomes
+- Include private Nova, BBIOS, or regulated operational data
+
+## Related public work
+
+- [ERP AI Delay Risk](../ai-ml-systems/erp-delay-risk) — portfolio ML architecture for operational delay signals (public repo; not a production deployment claim)
+- [AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic) — assess readiness before adding AI on top of ERP data

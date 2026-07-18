@@ -1,0 +1,106 @@
+---
+title: FIFO and Inventory Costing
+description: 'Sanitized FIFO and inventory costing patterns for mid-market ERP—layer integrity, valuation alignment, and reconciliation discipline.'
+sidebar_position: 3
+tags: [fifo, inventory, costing, sage-100, portfolio-patterns]
+---
+
+# FIFO and Inventory Costing
+
+Costing errors do not stay in finance. They distort margin by customer, product, and channel—and they undermine any ML or analytics layer built on shipment and inventory history.
+
+:::info Portfolio architecture example
+
+This page documents **sanitized FIFO and inventory costing patterns** typical of Sage 100–class perpetual inventory environments. It is illustrative methodology, not an audited financial outcome from any named organization.
+
+:::
+
+## Core principle
+
+**Physical flow, costing layers, and GL valuation must reconcile to the same rules.** When they diverge, fix the rule or the transaction—not the report.
+
+## FIFO layer mental model
+
+```text
+Receipt creates layer (qty, unit cost, date/lot)
+        ↓
+Issues consume oldest eligible layer first (policy-defined)
+        ↓
+Remaining layers = on-hand quantity at layered cost
+        ↓
+Extensions roll to inventory valuation and COGS at issue
+```
+
+## Pattern 1: Layer creation discipline
+
+Every inventory increase should create or extend a layer with traceable source:
+
+| Source      | Layer inputs                                   |
+| ----------- | ---------------------------------------------- |
+| PO receipt  | PO cost, landed cost adjustments, receipt date |
+| Transfer in | Origin layer reference or standard cost policy |
+| Adjustment  | Approved reason, unit cost basis, approver     |
+
+**Failure mode:** Adjustments that change quantity without layer logic produce orphan cost.
+
+## Pattern 2: Consumption rules explicit per item class
+
+FIFO is not one universal behavior in mid-market ERP. Document per item class:
+
+- Strict FIFO by receipt date
+- Lot-controlled FIFO
+- Standard cost items with variance posting
+- Non-inventoried / direct-expense items
+
+Operators and report consumers should know which rule applies before debating a margin report.
+
+## Pattern 3: Landed cost timing
+
+**Problem:** Freight, duty, and vendor charges arrive after receipt, causing layer cost drift.
+
+**Pattern:** Define when landed cost accruals attach to open layers vs. post as adjustment. Reconcile accrued vs. actual on a defined cadence.
+
+## Pattern 4: Transfer and reclassification
+
+**Problem:** Location transfers that bypass layer logic create double-count or negative-layer artifacts.
+
+**Pattern:** Transfers move quantity **and** layer reference (or use defined cost-on-transfer policy). Reclassification workflows require approval when item ID or UOM changes.
+
+## Pattern 5: Period-end reconciliation trio
+
+Run three reconciliations before closing inventory periods:
+
+1. **Quantity:** System on-hand vs. cycle count by location class
+2. **Layer:** Layer detail extension vs. inventory subledger
+3. **GL:** Inventory and COGS accounts vs. subledger roll-forward
+
+Document known timing differences (in-transit, uninvoiced receipts) instead of forcing match through manual journal without narrative.
+
+## Common root causes of FIFO drift (portfolio examples)
+
+| Symptom                                  | Likely causes                                               |
+| ---------------------------------------- | ----------------------------------------------------------- |
+| COGS spike on slow mover                 | Backdated receipts, wrong UOM conversion, manual layer edit |
+| Negative remaining layer                 | Issue before receipt posted, duplicate issue, bad transfer  |
+| Margin OK in warehouse, wrong in finance | Standard vs. actual mix, wrong item type, GL mapping        |
+| Analytics vs. ERP mismatch               | ETL snapshot timing, excluded adjustment reason codes       |
+
+## Controls worth documenting
+
+- Who can post inventory adjustments and in what dollar threshold
+- Whether backdated transactions are allowed and how they are flagged
+- How partial receipts and partial invoices interact with layer creation
+- How returns (RMA) restore or consume layers
+
+## Boundaries
+
+This page does **not**:
+
+- Provide accounting, tax, or audit advice
+- Assert compliance with any specific standard
+- Claim results from a named implementation
+
+## Related topics
+
+- [Supply Chain and Warehouse](./supply-chain-and-warehouse) — scan timing drives layer integrity
+- [ERP Data Quality](./erp-data-quality) — item master and UOM errors break FIFO silently

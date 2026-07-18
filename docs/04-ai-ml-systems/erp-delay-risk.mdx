@@ -1,0 +1,115 @@
+---
+title: ERP Delay Risk
+description: 'Public portfolio ML architecture for operational delay-risk prediction—capabilities, boundaries, and honest deployment status.'
+sidebar_position: 2
+tags: [erp, machine-learning, delay-risk, portfolio-evidence]
+---
+
+# ERP Delay Risk
+
+**Repository:** [github.com/Tmgilliam/erp-ai-delay-risk](https://github.com/Tmgilliam/erp-ai-delay-risk)
+
+:::warning Honest status
+
+This page describes a **public portfolio repository** exploring ML architecture for operational delay-risk signals. It is **not** a claim of live production deployment, client engagement, or verified business outcomes unless explicitly documented in that repository's releases and evidence artifacts.
+
+Verify implementation status in the repository README, tags, and CI—not from this summary alone.
+
+:::
+
+## Problem framing (portfolio)
+
+Distribution and fulfillment operations need early signals when orders or lines are **likely to miss promise dates**—so planners can intervene, reprioritize, or communicate proactively.
+
+A delay-risk model is only as trustworthy as:
+
+- Label definition aligned to operational truth
+- Feature timestamps that respect causality (no leakage from future events)
+- Coverage across product, channel, and location segments
+- Human workflow when the model disagrees with experienced planners
+
+## Intended system shape (architecture reference)
+
+```text
+ERP-adjacent sources (sanitized / synthetic in public repo)
+           â†“
+   Feature engineering pipeline
+           â†“
+   Train / evaluate / register model
+           â†“
+   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+   â†“                             â†“
+Batch scoring               Real-time scoring API
+   â†“                             â†“
+Operational report          App / agent consumer (authorized)
+           â†“
+   Human review + override + evidence log
+```
+
+Public repo code may implement subsets of this reference—treat each component as **present only if evidenced in repo**.
+
+## Architectural components (target vocabulary)
+
+| Component                        | Purpose                                               |
+| -------------------------------- | ----------------------------------------------------- |
+| Feature store or feature scripts | Reproducible transforms with version pins             |
+| Training pipeline                | Repeatable splits, metrics, artifact output           |
+| Evaluation report                | Precision/recall or ranking metrics with segment cuts |
+| Model registry (logical)         | Version, data snapshot ID, metrics, limitations       |
+| Batch scoring job                | Scheduled risk scores for planning dashboards         |
+| Scoring API                      | Low-latency inference with schema validation          |
+| Executive / ops report           | Summarized risk bands—not raw model dumps             |
+
+## Data and labeling discipline
+
+Portfolio-safe practices reflected in this architecture:
+
+- **Labels** derived from promise date vs. actual ship/complete—with explicit grace rules
+- **Features** restricted to information available at decision time
+- **Exclusions** documented (partial shipments, manual overrides, data gaps)
+- **Synthetic or sanitized data** in public artifacts—never private ERP extracts
+
+## Delivery modes
+
+### Batch
+
+Suitable for daily planner workflows and email/BI consumption. Emphasizes throughput and audit snapshots.
+
+### Real-time (API)
+
+Suitable for cart or order-entry assist **only** with human oversight and fallback when features are missing.
+
+Both modes require schema validation, model version headers, and structured error responses.
+
+## Evaluation honesty
+
+Public portfolio standards require:
+
+- Metrics reported on held-out data with time-aware splits where applicable
+- Segment analysis (product family, region, carrier) to expose weak coverage
+- Documented limitations and known failure modes
+- No implied ROI unless computed from public, reproducible sample data labeled as illustrative
+
+## What this repository is not
+
+- Not proof of deployment inside any named client or employer environment
+- Not a substitute for ERP data-quality remediation
+- Not an autonomous decision engine—risk scores inform humans
+- Not using private BBIOS, Nova, or confidential operational telemetry
+
+## Relationship to other portfolio work
+
+- [ERP Data Quality](../erp-transformation/erp-data-quality) — prerequisites for features and labels
+- [AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic) — readiness gate before implementation spend
+- [Deployment and Observability](../cloud-architecture/deployment-and-observability) — when API or batch jobs exist in repo
+
+## Next steps for reviewers
+
+1. Clone the repository and read the README limitation section
+2. Run documented tests or sample pipeline if provided
+3. Check release tags and open issues for deployment status
+4. Contrast this architecture page with what is actually implemented
+
+## External link
+
+- [ERP AI Delay Risk on GitHub](https://github.com/Tmgilliam/erp-ai-delay-risk)

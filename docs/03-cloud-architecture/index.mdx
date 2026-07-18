@@ -1,0 +1,56 @@
+---
+title: Cloud Architecture
+description: 'Cloud and platform architecture principles for enterprise AI and ERP workloads—evidenced by public portfolio repositories, not production deployment claims.'
+sidebar_position: 1
+tags: [cloud, azure, architecture, portfolio-evidence]
+---
+
+# Cloud Architecture
+
+Cloud architecture is how evidence, execution, and governance survive contact with production constraints—identity, network boundaries, cost, resilience, and observability. This section documents **principles and patterns** reflected in public portfolio work.
+
+:::info Portfolio evidence, not production claims
+
+References to Azure, Bicep, GCP, AWS, or specific repositories describe **public architecture examples** and certification-backed design knowledge. They do not assert that every pattern is deployed in a named client or employer environment unless explicitly linked to a verified public artifact.
+
+:::
+
+## Azure certification foundation
+
+Dr. Tatianna Gilliam holds **Microsoft Certified: Azure Solutions Architect Expert (AZ-305)**, with supporting credentials along the Azure role path (Fundamentals and Administrator). See [Azure Solutions Architect Expert](../certifications/azure-architect) for the public certification record and how it maps to portfolio architecture work.
+
+## What this section covers
+
+| Page                                                           | Focus                                                                 |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [Architecture Principles](./architecture-principles)           | Evidence-first design, boundaries, reuse, and honest labeling         |
+| [Deployment and Observability](./deployment-and-observability) | Static and CI-driven delivery, health signals, and failure visibility |
+
+## Public repositories as architecture evidence
+
+Portfolio repositories demonstrate **design intent**—IaC structure, module boundaries, CI workflows, API shapes, and documentation discipline. Examples commonly referenced in this portfolio include:
+
+| Repository                                                                                                                  | Architecture signal                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [bbi-ai-readiness-diagnostic-kit](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit) | Zero-dependency runtime, CI, release discipline, public proof gate                                                   |
+| [erp-ai-delay-risk](https://github.com/Tmgilliam/erp-ai-delay-risk)                                                         | ML pipeline structure, scoring API shape, batch/real-time separation (portfolio; see honest status in AI/ML section) |
+| [Brilliant-Brainstorm-Intelligence-LLC](https://github.com/Brilliant-Brainstorm-Intelligence-LLC)                           | Org standards, governance templates, shared community files                                                          |
+
+Additional public repos under [github.com/Tmgilliam](https://github.com/Tmgilliam) may illustrate Azure Bicep modules, container patterns, or multi-cloud experiments. Treat each repo's README and release state as the source of truth for what is actually implemented.
+
+## Multi-cloud stance (portfolio level)
+
+Azure is the primary certification and enterprise design anchor. Public portfolio work may include **GCP or AWS examples** for specific tools or experiments. Those repos demonstrate transferable patterns—identity boundaries, least privilege, infrastructure as code, and observable deployments—not a claim of uniform multi-cloud production standardization.
+
+## Design values
+
+- **Evidence before scale** — prove the workload locally or in bounded CI before broad rollout
+- **Least privilege by default** — scoped identities, secrets outside source, no silent admin
+- **Static where sufficient** — documentation and diagnostic tools do not require live clusters
+- **Observable failures** — health checks, structured logs, and explicit non-goals
+
+## Related sections
+
+- [Architecture Decisions](../architecture-decisions/) — ADRs for this site and public proof boundary
+- [AI/ML Systems](../ai-ml-systems/) — model delivery and scoring architecture
+- [Certifications](../certifications/) — formal cloud credentials

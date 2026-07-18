@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest documentation, blog, or site improvements
+title: '[Feature]: '
+labels: ['enhancement', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: Feature requests should align with the public portfolio scope and Public Proof Gate.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What is missing or unclear for reviewers or readers?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should be added or changed?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or public-safe source
+      description: Link to public repo, ADR, or labeled portfolio pattern—no private data.
+  - type: checkboxes
+    id: gate
+    attributes:
+      label: Public Proof Gate alignment
+      options:
+        - label: This request does not require exposing private BBIOS, client, or employer data.
+          required: true
+        - label: Any new claims can be traced to public evidence or labeled assumptions.
+          required: true

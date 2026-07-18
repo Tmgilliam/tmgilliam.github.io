@@ -1,30 +1,61 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #c9a84c;
+  --ifm-color-primary-dark: #b8943d;
+  --ifm-color-primary-darker: #ad8b39;
+  --ifm-color-primary-darkest: #8f7230;
+  --ifm-color-primary-light: #d4b663;
+  --ifm-color-primary-lighter: #d9bd70;
+  --ifm-color-primary-lightest: #e4d097;
+  --ifm-background-color: #f7f4ee;
+  --ifm-font-color-base: #1a2230;
+  --mtp-charcoal: #10141c;
+  --mtp-navy: #1a2740;
+  --mtp-ivory: #f7f4ee;
+  --mtp-gold: #e0be68;
+  --mtp-blue: #6f86a8;
+  --mtp-muted: #5c6b80;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+  --ifm-font-family-base: 'Segoe UI', Candara, Calibri, 'Trebuchet MS', sans-serif;
+  --ifm-heading-font-family: Georgia, 'Times New Roman', serif;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #e0be68;
+  --ifm-color-primary-dark: #d9b14c;
+  --ifm-color-primary-darker: #d5aa3e;
+  --ifm-color-primary-darkest: #b38c27;
+  --ifm-color-primary-light: #e7cb84;
+  --ifm-color-primary-lighter: #ebd192;
+  --ifm-color-primary-lightest: #f2e3b8;
+  --ifm-background-color: #10141c;
+  --ifm-font-color-base: #f4f4f0;
+  --docusaurus-highlighted-code-line-bg: rgba(224, 190, 104, 0.12);
+}
+
+a:focus-visible,
+button:focus-visible,
+.navbar__link:focus-visible,
+.footer__link-item:focus-visible {
+  outline: 2px solid var(--mtp-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.navbar__logo {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.navbar__logo img {
+  border-radius: 50%;
 }

@@ -1,6 +1,6 @@
 {
   "name": "tmgilliam-github-io",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -12,7 +12,12 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run build",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
@@ -29,8 +34,14 @@
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
+    "@eslint/js": "^9.30.1",
+    "@lhci/cli": "^0.15.1",
     "@types/react": "^19.0.0",
-    "typescript": "~6.0.2"
+    "eslint": "^9.30.1",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.36.0"
   },
   "browserslist": {
     "production": [
