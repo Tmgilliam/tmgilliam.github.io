@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Dr. Tatianna Gilliam  Enterprise AI, Cloud Architecture, ERP Transformation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10141C"/>
+      <stop offset="55%" stop-color="#141A24"/>
+      <stop offset="100%" stop-color="#1A2230"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="72" y="90" width="10" height="440" fill="#E0BE68"/>
+  <text x="110" y="230" fill="#F4F4F0" font-family="Segoe UI, Calibri, Arial, sans-serif" font-size="56" font-weight="700">Dr. Tatianna Gilliam</text>
+  <text x="115" y="310" fill="#E0BE68" font-family="Segoe UI, Calibri, Arial, sans-serif" font-size="28" font-weight="600">Enterprise AI · Cloud Architecture · ERP Transformation</text>
+  <text x="115" y="420" fill="#A6B2C4" font-family="Segoe UI, Calibri, Arial, sans-serif" font-size="24">Build the system. Prove the work.</text>
+</svg>
