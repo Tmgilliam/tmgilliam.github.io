@@ -1,3 +1,12 @@
+export type ProjectStatus = 'Released' | 'Active' | 'Case Study' | 'Planned';
+export type PublicProofGate = 'Passed' | 'In Review' | 'Not Started';
+
+/** Primary catalog section (each project appears once; featured is an overlay). */
+export type ProjectSection =
+  | 'engineering-governance'
+  | 'enterprise-transformation'
+  | 'ai-governed';
+
 export type Project = {
   id: string;
   name: string;
@@ -10,9 +19,12 @@ export type Project = {
   repositoryUrl?: string;
   demoUrl?: string;
   releaseUrl?: string;
-  status: 'Released' | 'Active' | 'Case Study' | 'Planned';
-  publicProofGate: 'Passed' | 'In Review' | 'Not Started';
+  status: ProjectStatus;
+  publicProofGate: PublicProofGate;
+  section: ProjectSection;
   featured?: boolean;
+  /** Honest boundary notes for private or non-repo artifacts */
+  boundaryNote?: string;
 };
 
 export const projects: Project[] = [
@@ -40,6 +52,10 @@ export const projects: Project[] = [
         url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/releases/tag/v0.1.0',
       },
       {label: 'Documentation', url: '/docs/enterprise-ai/ai-readiness-diagnostic'},
+      {
+        label: 'Related: interactive assessment (planned)',
+        url: '/projects',
+      },
     ],
     repositoryUrl:
       'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit',
@@ -47,6 +63,7 @@ export const projects: Project[] = [
       'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/releases/tag/v0.1.0',
     status: 'Released',
     publicProofGate: 'Passed',
+    section: 'ai-governed',
     featured: true,
   },
   {
@@ -79,34 +96,41 @@ export const projects: Project[] = [
     repositoryUrl: 'https://github.com/Tmgilliam/erp-ai-delay-risk',
     status: 'Active',
     publicProofGate: 'In Review',
+    section: 'ai-governed',
     featured: true,
   },
   {
-    id: 'bbi-roadmap',
-    name: 'BBI Public Engineering Roadmap',
+    id: 'mtp-portfolio-platform',
+    name: 'MTP Executive Technical Portfolio Platform',
     summary:
-      'Organization project board tracking public engineering work across diagnostics, templates, workflows, governed-agent patterns, and casebooks.',
+      'This site: a Docusaurus and TypeScript recruiter portfolio with GitHub Pages deployment, CI/CD, CodeQL, dependency controls, accessibility checks, and explicit public/private publication boundaries.',
     problem:
-      'Public technical work needs a transparent backlog with honest status, proof gates, and release sequencing.',
-    role: 'Founder — Brilliant Brainstorm Intelligence, LLC',
-    technologies: ['GitHub Projects', 'Public engineering governance'],
+      'Technical leadership work is hard to evaluate without a durable, recruiter-facing proof surface that separates verified public artifacts from private systems.',
+    role: 'Author, designer, and maintainer',
+    technologies: [
+      'Docusaurus',
+      'TypeScript',
+      'GitHub Pages',
+      'GitHub Actions',
+      'CodeQL',
+      'Lighthouse / a11y checks',
+    ],
     recruiterSignals: [
-      'Visible public backlog',
-      'Status and proof-gate fields',
-      'Seeded roadmap items',
+      'Live public product you are evaluating now',
+      'DevOps, security controls, and information architecture in one system',
+      'Public Proof Gate and privacy-boundary discipline',
     ],
     evidence: [
-      {
-        label: 'Project board',
-        url: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
-      },
-      {
-        label: 'BBI organization',
-        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
-      },
+      {label: 'Live site', url: 'https://tmgilliam.github.io'},
+      {label: 'Repository', url: 'https://github.com/Tmgilliam/tmgilliam.github.io'},
+      {label: 'Release v0.1.0', url: 'https://github.com/Tmgilliam/tmgilliam.github.io/releases/tag/v0.1.0'},
     ],
-    status: 'Active',
+    repositoryUrl: 'https://github.com/Tmgilliam/tmgilliam.github.io',
+    demoUrl: 'https://tmgilliam.github.io',
+    releaseUrl: 'https://github.com/Tmgilliam/tmgilliam.github.io/releases/tag/v0.1.0',
+    status: 'Released',
     publicProofGate: 'In Review',
+    section: 'engineering-governance',
     featured: true,
   },
   {
@@ -124,10 +148,16 @@ export const projects: Project[] = [
     ],
     evidence: [
       {label: 'Repository', url: 'https://github.com/Tmgilliam/erp-cloud-integration'},
+      {
+        label: 'Related: Azure landing zone',
+        url: 'https://github.com/Tmgilliam/azure-landing-zone-reference',
+      },
     ],
     repositoryUrl: 'https://github.com/Tmgilliam/erp-cloud-integration',
     status: 'Case Study',
     publicProofGate: 'In Review',
+    section: 'enterprise-transformation',
+    featured: true,
   },
   {
     id: 'azure-landing-zone',
@@ -147,10 +177,183 @@ export const projects: Project[] = [
         label: 'Repository',
         url: 'https://github.com/Tmgilliam/azure-landing-zone-reference',
       },
+      {
+        label: 'Related: ERP-to-cloud integration',
+        url: 'https://github.com/Tmgilliam/erp-cloud-integration',
+      },
     ],
     repositoryUrl: 'https://github.com/Tmgilliam/azure-landing-zone-reference',
     status: 'Case Study',
     publicProofGate: 'In Review',
+    section: 'enterprise-transformation',
+    featured: true,
+  },
+  {
+    id: 'bbi-governance-system',
+    name: 'BBI Public Engineering Governance System',
+    summary:
+      'Organization-level engineering governance: profile architecture, community standards, teams, PR-only delivery, rulesets, CODEOWNERS, CodeQL, secret scanning, Dependabot, Scorecard, Public Proof Gate, and release discipline.',
+    problem:
+      'Public technical organizations need enforceable delivery controls—not only a backlog or a README.',
+    role: 'Founder — Brilliant Brainstorm Intelligence, LLC',
+    technologies: [
+      'GitHub Organizations',
+      'Rulesets',
+      'CODEOWNERS',
+      'CodeQL',
+      'Dependabot',
+      'OpenSSF Scorecard',
+      'Public Proof Gate',
+    ],
+    recruiterSignals: [
+      'Platform and governance case study',
+      'Least-privilege and PR-only delivery patterns',
+      'Relevant to Staff/Principal and AI governance roles',
+    ],
+    evidence: [
+      {
+        label: 'Organization',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+      },
+      {
+        label: 'Org profile / community health',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/.github',
+      },
+      {
+        label: 'Roadmap project',
+        url: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
+      },
+    ],
+    status: 'Active',
+    publicProofGate: 'In Review',
+    section: 'engineering-governance',
+  },
+  {
+    id: 'bbi-roadmap',
+    name: 'BBI Public Engineering Roadmap',
+    summary:
+      'Organization project board tracking public engineering work across diagnostics, templates, workflows, governed-agent patterns, and casebooks. Governance artifact—not a product repository.',
+    problem:
+      'Public technical work needs a transparent backlog with honest status, proof gates, and release sequencing.',
+    role: 'Founder — Brilliant Brainstorm Intelligence, LLC',
+    technologies: ['GitHub Projects', 'Public engineering governance'],
+    recruiterSignals: [
+      'Visible public backlog intent',
+      'Status and proof-gate fields',
+      'Sequenced initiative planning',
+    ],
+    evidence: [
+      {
+        label: 'Project board',
+        url: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
+      },
+      {
+        label: 'BBI organization',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+      },
+    ],
+    status: 'Active',
+    publicProofGate: 'In Review',
+    section: 'engineering-governance',
+    boundaryNote:
+      'Engineering systems artifact. Visibility of the project board may require sign-in until org project visibility is confirmed public.',
+  },
+  {
+    id: 'continuous-public-publishing',
+    name: 'Continuous Public Proof Publishing System',
+    summary:
+      'Approved public facts → registry → generated update PR → privacy checks → Public Proof Gate → human merge → deployment → live verification. Content supply-chain for public surfaces.',
+    problem:
+      'Public proof decays without a governed pipeline that blocks private material and unverified claims.',
+    role: 'Architect and implementer — BBI public proof system',
+    technologies: [
+      'YAML registry',
+      'GitHub Actions',
+      'Reusable workflows',
+      'Privacy-boundary scans',
+      'Public Proof Gate',
+    ],
+    recruiterSignals: [
+      'Least-privilege automation with human merge',
+      'Claims validation and privacy enforcement',
+      'Multi-surface publishing architecture',
+    ],
+    evidence: [
+      {
+        label: 'Public proof registry',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-public-proof-registry',
+      },
+      {
+        label: 'Reusable workflows',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-reusable-workflows',
+      },
+    ],
+    repositoryUrl:
+      'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-public-proof-registry',
+    status: 'Active',
+    publicProofGate: 'In Review',
+    section: 'engineering-governance',
+  },
+  {
+    id: 'bbi-reusable-workflows',
+    name: 'BBI Reusable Engineering Workflows',
+    summary:
+      'Shared GitHub Actions for public site quality, privacy-boundary scan, Public Proof Gate, Pages deploy, metadata sync, freshness audit, and release automation patterns.',
+    problem:
+      'Each public repository reinventing CI, privacy checks, and proof gates creates drift and weak evidence.',
+    role: 'Platform author — Brilliant Brainstorm Intelligence, LLC',
+    technologies: ['GitHub Actions', 'Reusable workflows', 'Quality gates'],
+    recruiterSignals: [
+      'Platform thinking and reusable delivery controls',
+      'Wired into portfolio and public-proof repos',
+    ],
+    evidence: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-reusable-workflows',
+      },
+      {
+        label: 'Related: proof registry',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-public-proof-registry',
+      },
+    ],
+    repositoryUrl:
+      'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-reusable-workflows',
+    status: 'Active',
+    publicProofGate: 'In Review',
+    section: 'engineering-governance',
+  },
+  {
+    id: 'interactive-ai-readiness',
+    name: 'Interactive AI Readiness Assessment',
+    summary:
+      'Planned browser-based companion to the CLI diagnostic kit: client-side scoring, downloadable reports, validation, accessibility, and architecture transparency. Distinct product surface from the CLI.',
+    problem:
+      'CLI diagnostics prove rigor; interactive delivery proves product UX and stakeholder accessibility.',
+    role: 'Author — planned public product (target v0.2.0 line)',
+    technologies: [
+      'Browser delivery',
+      'Client-side scoring',
+      'Report generation',
+      'Accessibility',
+    ],
+    recruiterSignals: [
+      'Planned product companion to released CLI kit',
+      'Not the same artifact as the diagnostic kit',
+    ],
+    evidence: [
+      {
+        label: 'Related: CLI kit (released)',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit',
+      },
+      {
+        label: 'Roadmap',
+        url: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
+      },
+    ],
+    status: 'Planned',
+    publicProofGate: 'Not Started',
+    section: 'ai-governed',
   },
   {
     id: 'governed-agent-patterns',
@@ -174,7 +377,100 @@ export const projects: Project[] = [
     ],
     status: 'Planned',
     publicProofGate: 'Not Started',
+    section: 'ai-governed',
+  },
+  {
+    id: 'erp-transformation-casebook',
+    name: 'Enterprise ERP Transformation Casebook',
+    summary:
+      'Planned sanitized casebook covering warehouse/barcode transformation, inventory and costing architecture, ERP data quality, operational reporting, adoption decisions, and architecture tradeoffs.',
+    problem:
+      'Recruiters and peers rarely see enterprise judgment artifacts—only code repositories.',
+    role: 'Author — planned public casebook',
+    technologies: [
+      'ERP transformation',
+      'Warehouse / barcode systems',
+      'Inventory costing',
+      'Data quality',
+      'Stakeholder adoption',
+    ],
+    recruiterSignals: [
+      'Enterprise judgment and operating tradeoffs',
+      'Complement to code-first portfolio repos',
+    ],
+    evidence: [
+      {label: 'Related ERP docs', url: '/docs/erp-transformation/'},
+      {
+        label: 'Roadmap',
+        url: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
+      },
+    ],
+    status: 'Planned',
+    publicProofGate: 'Not Started',
+    section: 'enterprise-transformation',
+  },
+  {
+    id: 'bbi-engineering-portal',
+    name: 'BBI Engineering Knowledge Portal',
+    summary:
+      'Planned organization-level Pages site for product documentation, governance patterns, releases, architecture standards, public methods, contribution guidance, and engineering roadmap.',
+    problem:
+      'Organization engineering knowledge needs a durable public home beyond scattered repository READMEs.',
+    role: 'Architect — planned BBI public portal',
+    technologies: ['GitHub Pages', 'Documentation architecture', 'Governance publishing'],
+    recruiterSignals: ['Organization-level knowledge system design'],
+    evidence: [
+      {
+        label: 'BBI organization',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+      },
+    ],
+    status: 'Planned',
+    publicProofGate: 'Not Started',
+    section: 'engineering-governance',
+  },
+  {
+    id: 'bbi-public-project-template',
+    name: 'BBI Public Project Engineering Template',
+    summary:
+      'Planned reusable template with CI, CodeQL, Dependabot, Scorecard, CODEOWNERS, issue/PR templates, release structure, Public Proof Gate, and security/governance docs.',
+    problem:
+      'New public repositories need a governed starting posture, not a blank git init.',
+    role: 'Platform author — planned public template',
+    technologies: [
+      'Repository templates',
+      'CI',
+      'CodeQL',
+      'Dependabot',
+      'OpenSSF Scorecard',
+      'Public Proof Gate',
+    ],
+    recruiterSignals: ['Reusable platform engineering asset'],
+    evidence: [
+      {
+        label: 'Related: reusable workflows',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-reusable-workflows',
+      },
+    ],
+    status: 'Planned',
+    publicProofGate: 'Not Started',
+    section: 'engineering-governance',
   },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export function projectsInSection(
+  section: ProjectSection,
+  options: {includeFeatured?: boolean; includePlanned?: boolean} = {},
+): Project[] {
+  const {includeFeatured = false, includePlanned = false} = options;
+  return projects.filter((project) => {
+    if (project.section !== section) return false;
+    if (!includePlanned && project.status === 'Planned') return false;
+    if (!includeFeatured && project.featured) return false;
+    return true;
+  });
+}
+
+export const plannedProjects = projects.filter((project) => project.status === 'Planned');

@@ -209,13 +209,16 @@ export default function Home(): ReactElement {
             <SectionHeading
               eyebrow="Featured technical systems"
               title="Released and active public proof"
-              description="Primary featured work excludes planned items."
+              description="Five strongest public systems. Full curated catalog—including governance platforms and planned work—lives on Projects."
             />
             <div className={styles.grid3}>
               {featuredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} compact />
               ))}
             </div>
+            <p className="margin-top--md">
+              <Link href="/projects">Browse the curated project catalog</Link>
+            </p>
           </div>
         </section>
 
