@@ -1,0 +1,240 @@
+.hero {
+  background:
+    radial-gradient(circle at top right, rgba(224, 190, 104, 0.14), transparent 42%),
+    linear-gradient(
+      160deg,
+      var(--mtp-charcoal) 0%,
+      var(--mtp-navy) 58%,
+      var(--mtp-charcoal) 100%
+    );
+  color: #f4f4f0;
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+}
+
+.heroInner {
+  max-width: 52rem;
+}
+
+.eyebrow {
+  color: var(--mtp-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.78rem;
+  margin: 0 0 0.75rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+  margin: 0 0 1rem;
+  color: #f4f4f0;
+}
+
+.heroLead,
+.heroSupport,
+.bbiBridge {
+  color: #c8d0dc;
+  max-width: 44rem;
+  line-height: 1.6;
+}
+
+.heroLead {
+  font-size: 1.15rem;
+  margin: 0 0 1rem;
+}
+
+.heroSupport {
+  margin: 0 0 1rem;
+}
+
+.bbiBridge {
+  margin: 0;
+  border-top: 1px solid rgba(224, 190, 104, 0.22);
+  padding-top: 1rem;
+}
+
+.section {
+  padding: 3.25rem 0;
+}
+
+.alt {
+  background: color-mix(in srgb, var(--mtp-navy) 8%, transparent);
+}
+
+.sectionIntro {
+  max-width: 46rem;
+  color: var(--mtp-muted);
+  margin: 0 0 1.75rem;
+}
+
+[data-theme='dark'] .sectionIntro {
+  color: #aeb8c7;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.card,
+.topicCard,
+.audienceCard,
+.bbiPanel,
+.ctaPanel {
+  background: color-mix(in srgb, var(--mtp-navy) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 26%, transparent);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.35rem;
+}
+
+[data-theme='light'] .card,
+[data-theme='light'] .topicCard,
+[data-theme='light'] .audienceCard,
+[data-theme='light'] .bbiPanel,
+[data-theme='light'] .ctaPanel {
+  background: #fffdf8;
+}
+
+.cardHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.cardHeader h3,
+.topicCard h3,
+.audienceCard h3,
+.bbiPanel h2,
+.ctaPanel h2 {
+  margin: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--mtp-blue) 55%, transparent);
+  color: var(--mtp-blue);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.badgeLimited {
+  border-color: color-mix(in srgb, var(--mtp-gold) 55%, transparent);
+  color: var(--ifm-color-primary);
+}
+
+.badgePlanned {
+  border-color: color-mix(in srgb, var(--mtp-muted) 55%, transparent);
+  color: var(--mtp-muted);
+}
+
+.summary {
+  margin: 0 0 1rem;
+}
+
+.listLabel {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mtp-muted);
+  font-weight: 700;
+}
+
+.card ul,
+.topicCard ul {
+  margin: 0 0 0.85rem;
+  padding-left: 1.15rem;
+}
+
+.card ul:last-child,
+.topicCard ul:last-child {
+  margin-bottom: 0;
+}
+
+.coreQuestion {
+  font-style: italic;
+  margin: 0 0 1rem;
+}
+
+.proofNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.proofNav a {
+  font-size: 0.92rem;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--mtp-muted);
+}
+
+.iconMark {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 45%, transparent);
+  border-radius: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.bbiPanel p,
+.ctaPanel p {
+  max-width: 46rem;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.note {
+  margin: 1rem 0 0;
+  font-size: 0.92rem;
+  color: var(--mtp-muted);
+}
+
+@media (max-width: 996px) {
+  .grid2,
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .topicCard,
+  .audienceCard {
+    transition: none;
+  }
+}

@@ -92,6 +92,7 @@ const config: Config = {
       items: [
         {to: '/projects', label: 'Projects', position: 'left'},
         {to: '/architecture', label: 'Architecture', position: 'left'},
+        {to: '/speaking', label: 'Speaking', position: 'left'},
         {to: '/docs/erp-transformation/', label: 'ERP Transformation', position: 'left'},
         {to: '/docs/enterprise-ai/', label: 'Enterprise AI', position: 'left'},
         {to: '/writing', label: 'Writing', position: 'left'},
@@ -117,6 +118,7 @@ const config: Config = {
           items: [
             {label: 'Projects', to: '/projects'},
             {label: 'Architecture', to: '/architecture'},
+            {label: 'Speaking', to: '/speaking'},
             {label: 'Enterprise AI', to: '/docs/enterprise-ai/'},
             {label: 'ERP Transformation', to: '/docs/erp-transformation/'},
           ],
@@ -148,7 +150,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright Â© ${new Date().getFullYear()} Dr. Tatianna Gilliam. Public technical proof only — no private systems or client data.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Dr. Tatianna Gilliam. Public technical proof only — no private systems or client data.`,
     },
     prism: {
       theme: prismThemes.github,

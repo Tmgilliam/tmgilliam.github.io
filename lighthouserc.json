@@ -3,7 +3,7 @@
     "collect": {
       "startServerCommand": "npm run serve -- --port 3000",
       "startServerReadyPattern": "serving at",
-      "url": ["http://localhost:3000/"],
+      "url": ["http://localhost:3000/", "http://localhost:3000/speaking"],
       "numberOfRuns": 1
     },
     "assert": {
