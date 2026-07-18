@@ -1,0 +1,8 @@
+{
+  "label": "Cloud Architecture",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Cloud and platform architecture principles evidenced by public portfolio repositories—Azure-first design, deployment patterns, and observability discipline."
+  }
+}

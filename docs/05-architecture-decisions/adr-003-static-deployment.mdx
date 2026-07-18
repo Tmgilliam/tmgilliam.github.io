@@ -1,0 +1,58 @@
+---
+title: 'ADR-003: Static Deployment'
+description: Decision to deploy the public portfolio as static assets on GitHub Pages.
+sidebar_position: 4
+tags: [adr, github-pages, static, deployment]
+---
+
+# ADR-003: Static Deployment (GitHub Pages)
+
+## Status
+
+**Accepted** — July 2026
+
+## Context
+
+This portfolio site is primarily **read-only documentation and blog content**. It does not require server-side business logic, authenticated user sessions, or dynamic database access for core value delivery.
+
+Hosting options considered:
+
+| Option                   | Notes                                                           |
+| ------------------------ | --------------------------------------------------------------- |
+| GitHub Pages (static)    | Native to repo, low cost, CDN-backed                            |
+| Azure Static Web Apps    | Strong for apps with API backends; adds identity/config surface |
+| Containerized web server | Ongoing patch and scale burden for static content               |
+| Vercel/Netlify           | Excellent DX; optional future migration                         |
+
+## Decision
+
+Build with `docusaurus build` and deploy the `build/` directory to **GitHub Pages** from this repository (`Tmgilliam/tmgilliam.github.io`).
+
+Production URL target: `https://tmgilliam.github.io/` (user/org Pages convention).
+
+## Consequences
+
+### Positive
+
+- Minimal attack surface—no app server for doc reads
+- Predictable performance via static CDN
+- Content changes trace through git PRs and review
+- Aligns with evidence-first, low-ops portfolio stance
+
+### Negative
+
+- No server-side personalization or private doc tiers on Pages alone
+- Search relies on Algolia DocSearch or client-side alternatives if added later
+- Build failures block deploy—must keep CI green
+
+### Operational notes
+
+- Enable GitHub Actions workflow for build + deploy on main branch
+- Keep secrets out of repo; use GitHub Environments only if external services added
+- Fail builds on broken internal links
+
+## References
+
+- [Deployment and Observability](../cloud-architecture/deployment-and-observability)
+- [ADR-001: Portfolio Platform](./adr-001-portfolio-platform)
+- [GitHub Pages documentation](https://docs.github.com/pages)

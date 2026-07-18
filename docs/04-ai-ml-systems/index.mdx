@@ -1,0 +1,60 @@
+---
+title: AI/ML Systems
+description: 'End-to-end ML system patterns for operational intelligence—feature engineering, evaluation, delivery, and honest status labeling.'
+sidebar_position: 1
+tags: [machine-learning, mlops, erp, portfolio-evidence]
+---
+
+# AI/ML Systems
+
+Operational ML systems connect **data hygiene**, **model evaluation**, **delivery interfaces**, and **human oversight**. This section documents public portfolio architecture for ERP-adjacent prediction workloads—without overstating production deployment.
+
+## Portfolio stance
+
+| Claim type                                     | Standard                               |
+| ---------------------------------------------- | -------------------------------------- |
+| Code structure in a public repo                | OK when README and releases support it |
+| Offline model metrics on synthetic/sample data | OK when labeled as such                |
+| Live production deployment                     | **Only** with explicit public evidence |
+| Client or employer outcomes                    | **Not** in this public portfolio       |
+
+## Featured public repository
+
+### [ERP AI Delay Risk](https://github.com/Tmgilliam/erp-ai-delay-risk)
+
+Portfolio machine-learning architecture exploring operational **delay-risk signals** from ERP-adjacent features—feature engineering, model evaluation, API delivery patterns, batch and real-time scoring concepts, and reporting hooks.
+
+See [ERP Delay Risk](./erp-delay-risk) for an honest capability and status breakdown.
+
+## ML lifecycle (reference model)
+
+```text
+Problem framing → Label definition → Feature pipeline → Train/evaluate
+        → Bias/limitation review → Packaging → Delivery (batch/API)
+        → Monitor drift → Human override → Evidence archive
+```
+
+Each stage should produce artifacts a reviewer can inspect without private data access.
+
+## Prerequisites from ERP transformation
+
+Models built on ERP movement, order, or shipment history inherit:
+
+- Master data quality ([ERP Data Quality](../erp-transformation/erp-data-quality))
+- Warehouse timing integrity ([Supply Chain and Warehouse](../erp-transformation/supply-chain-and-warehouse))
+- Costing consistency where labels depend on fulfillment state ([FIFO and Inventory Costing](../erp-transformation/fifo-and-inventory-costing))
+
+Run the [AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic) before treating ML as the next step.
+
+## Governance
+
+- Human authority for consequential decisions
+- No automated approval based solely on model score
+- Explicit documentation of label leakage and exclusion rules
+- Public repos must not contain private extracts
+
+## Related sections
+
+- [Enterprise AI](../enterprise-ai/)
+- [Cloud Architecture](../cloud-architecture/)
+- [Architecture Decisions](../architecture-decisions/)

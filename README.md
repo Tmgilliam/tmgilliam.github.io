@@ -1,43 +1,23 @@
-# Website
+# Dr. Tatianna Gilliam — Master Tech Portfolio
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Public Docusaurus site for enterprise AI, cloud architecture, ERP transformation, and governed systems.
 
-## Installation
+- Live site: https://tmgilliam.github.io
+- Repository: https://github.com/Tmgilliam/tmgilliam.github.io
 
-```bash
-npm install
-```
-
-**Note**: feel free to use the package manager of your choice.
-
-## Local Development
+## Local development
 
 ```bash
-npm run start
+npm ci
+npm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Build
+## Quality
 
 ```bash
-npm run build
+npm run quality
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Boundaries
 
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+This site publishes public technical proof only. It does not expose private BBIOS systems, Nova material, client data, employer-confidential procedures, or personal financial information.

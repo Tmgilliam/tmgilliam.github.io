@@ -1,0 +1,58 @@
+---
+title: 'ADR-002: Public Proof Boundary'
+description: Decision rules for what may appear in public portfolio repositories and documentation.
+sidebar_position: 3
+tags: [adr, security, governance, public-proof]
+---
+
+# ADR-002: Public Proof Boundary
+
+## Status
+
+**Accepted** — July 2026
+
+## Context
+
+Public GitHub presence creates hiring and collaboration leverage—but also risk if private operating systems, client data, employer-confidential material, or unverified claims cross the boundary.
+
+Brilliant Brainstorm Intelligence maintains private systems (including BBIOS and Nova-related work) that inform methodology but must not be exposed verbatim. Recruiters still need **credible, verifiable** evidence.
+
+## Decision
+
+Adopt a **Public Proof Gate** ([PUBLIC_PROOF_GATE.md](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/PUBLIC_PROOF_GATE.md)) for publishable artifacts. Public content must:
+
+1. **Name the user and problem** in under 30 seconds
+2. **Provide one hero use case** with working example or labeled architecture
+3. **Trace claims** to code, tests, examples, sources, or explicitly labeled assumptions
+4. **State limitations and non-goals**
+5. **Exclude** secrets, personal data, client data, employer-confidential material, and private Nova/BBIOS content
+6. **Label status honestly** — shipped vs. prototype vs. planned
+7. **Never represent static examples as live telemetry**
+
+Portfolio documentation (this site) may include **sanitized ERP and warehouse patterns** as architecture examples when labeled as portfolio methodology—not as named client outcomes.
+
+## Consequences
+
+### Positive
+
+- Consistent reviewer experience across org and personal repos
+- Reduced accidental leakage during rapid iteration
+- Clear language for recruiters: what is runnable vs. roadmap
+
+### Negative
+
+- Slower publish cycle due to checklist and review
+- Some impressive internal work remains intentionally private
+- Requires discipline to avoid resume inflation
+
+### Follow-ups
+
+- Apply gate before new public repo releases
+- Cross-link flagship artifacts ([diagnostic kit v0.1.0](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/releases/tag/v0.1.0))
+- Track forthcoming work on [BBI project board](https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1)
+
+## References
+
+- [PUBLIC_PROOF_GATE.md](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/PUBLIC_PROOF_GATE.md)
+- [SECURITY.md](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/SECURITY.md)
+- [AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic)

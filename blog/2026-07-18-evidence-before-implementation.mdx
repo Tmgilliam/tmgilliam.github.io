@@ -1,0 +1,76 @@
+---
+slug: evidence-before-implementation
+title: Evidence Before Implementation
+authors: [tgilliam]
+tags: [ai-governance, evidence-first, ai-readiness, enterprise-ai]
+description: 'Why AI programs should pass an evidence gate before model or vendor selection—and how the BBI diagnostic kit operationalizes that discipline.'
+---
+
+Most AI programs fail before the model does. They fail because nobody agreed on the decision to improve, the data required, the human owner when the system is wrong, or the evidence that would justify the next dollar.
+
+{/* truncate */}
+
+## The default failure mode
+
+The default enterprise sequence looks like this:
+
+1. Hear about a vendor or foundation model
+2. Run a demo on sanitized data
+3. Declare a pilot
+4. Discover ERP keys, ownership gaps, and governance questions under deadline pressure
+
+By step four, sunk cost dominates rational review.
+
+## Flip the sequence
+
+**Evidence before implementation** means the first deliverable is not a model—it is a reviewed answer to:
+
+- What business outcome changes if this works?
+- What data fields and transaction history are required—and are they trustworthy?
+- Who approves action when the recommendation is wrong?
+- What happens on failure (customer impact, financial exposure, compliance trigger)?
+- What evidence would convince a skeptic?
+
+If those answers are weak, the correct next step is discovery—not procurement.
+
+## A runnable public tool
+
+I shipped the [BBI AI Readiness Diagnostic Kit](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit) ([v0.1.0](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/releases/tag/v0.1.0)) to make that gate tangible:
+
+```bash
+python -m bbi_ai_readiness.cli examples/sample-assessment.json
+```
+
+It scores six dimensions—business value, data readiness, human oversight, risk/governance, delivery readiness, and evidence quality—and applies critical-floor rules so a high average cannot hide a fatal gap.
+
+Example output:
+
+```text
+Overall score: 69.2 / 100
+Readiness band: CONDITIONAL
+Recommendation: Proceed only with a bounded discovery or prototype phase.
+```
+
+Scores are **decision aids**, not certifications or compliance determinations.
+
+## What changed in my own builds
+
+Applying the same gate to my portfolio forced uncomfortable clarity:
+
+- Public repos need a hero use case, tests, and explicit limitations
+- Sanitized ERP patterns belong in docs; private extracts do not
+- "Planned" must be labeled planned—recruiters deserve honesty
+
+The [Public Proof Gate](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/PUBLIC_PROOF_GATE.md) checklist codifies that boundary for every release.
+
+## Practical next step
+
+Pick one AI use case on your roadmap. Run an assessment JSON through the diagnostic CLI. Read the missing-evidence warnings before you read vendor pricing.
+
+If the band is `DISCOVERY` or `NOT READY`, that is a successful result—you bought clarity cheaply.
+
+## Links
+
+- [AI Readiness Diagnostic docs](/docs/enterprise-ai/ai-readiness-diagnostic)
+- [Brilliant Brainstorm Intelligence on GitHub](https://github.com/Brilliant-Brainstorm-Intelligence-LLC)
+- [BBI Edge](https://bbiedge.com)

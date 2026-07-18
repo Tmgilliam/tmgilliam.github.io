@@ -1,0 +1,136 @@
+---
+title: Deployment and Observability
+description: Deployment pipelines, static hosting, health signals, and observability patterns from public portfolio repositories.
+sidebar_position: 3
+tags: [deployment, observability, ci-cd, github-pages]
+---
+
+# Deployment and Observability
+
+Deployment architecture is incomplete without observability: you need to know when a release succeeded, when a workload is unhealthy, and when a claim in documentation diverges from runtime behavior.
+
+:::info Portfolio evidence
+
+Examples below reference **public repository patterns** (GitHub Actions, static site generation, CLI tools). They are not claims about a specific client's production observability stack.
+
+:::
+
+## Deployment patterns in this portfolio
+
+### Static site delivery (this documentation site)
+
+This Docusaurus site deploys as **static HTML** to GitHub Pages. Benefits:
+
+- No application server to patch for read-only documentation
+- Predictable cost and attack surface
+- PR preview or branch builds via GitHub Actions (when configured)
+- Content versioned with git history
+
+Decision record: [ADR-003: Static Deployment](../architecture-decisions/adr-003-static-deployment).
+
+### CLI and library releases
+
+The [BBI AI Readiness Diagnostic Kit](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit) uses:
+
+- GitHub Actions CI running unit tests
+- Tagged releases ([v0.1.0](https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/releases/tag/v0.1.0))
+- Release notes and changelog discipline
+- No mandatory cloud runtime for core value delivery
+
+### Application and ML repos (portfolio level)
+
+Public repos such as [erp-ai-delay-risk](https://github.com/Tmgilliam/erp-ai-delay-risk) may illustrate containerized APIs, batch scoring jobs, or infrastructure templates. **Verify each repo's README and release tags** for what is implemented vs. planned. This documentation does not assert live production deployment for those workloads.
+
+## Reference CI/CD flow (GitHub Actions)
+
+```text
+Push / PR
+   â†“
+Lint + unit tests
+   â†“
+Build artifact (site, package, container)
+   â†“
+(Optional) integration / smoke tests
+   â†“
+Deploy to target (Pages, registry, lab subscription)
+   â†“
+Post-deploy smoke + record release metadata
+```
+
+## Observability minimums
+
+Even small public projects benefit from explicit signals:
+
+| Signal                   | Purpose               | Portfolio example              |
+| ------------------------ | --------------------- | ------------------------------ |
+| CI pass/fail             | Regression gate       | Diagnostic kit unit tests      |
+| Build badge              | External trust cue    | README CI badge                |
+| Health endpoint          | Runtime liveness      | API repos when a server exists |
+| Structured logs          | Debug without secrets | JSON logs, correlation ID      |
+| Version endpoint or tag  | Supportability        | Semver git tags                |
+| Error budget / non-goals | Honest scope          | README limitations section     |
+
+## What to log vs. never log
+
+**Safe:**
+
+- Request ID, latency, outcome code
+- Deployment version, environment name
+- Aggregated counts and thresholds
+
+**Never in public repos or sample configs:**
+
+- API keys, connection strings, tokens
+- Personal data, client identifiers, employer-confidential payloads
+- Raw production ERP extracts
+
+## Environment promotion discipline
+
+When public repos include lab Azure/AWS/GCP deployments:
+
+1. **Dev/lab** — disposable resources, auto teardown where possible
+2. **Staging** — production-like identity and network, synthetic data only
+3. **Production** — out of scope for most public portfolio repos unless explicitly documented
+
+Document who approves promotion and what evidence is required (tests, smoke, rollback plan).
+
+## Failure visibility
+
+Observable systems expose failure modes early:
+
+- CI fails on main â†’ block release
+- Missing secrets â†’ fail at deploy with clear message, not silent partial deploy
+- Schema validation errors â†’ surface to operator with remediation hint (see diagnostic CLI)
+
+For static docs, broken links should fail build (`onBrokenLinks: 'throw'` in Docusaurus config).
+
+## Runbook template (public-safe)
+
+```markdown
+## Service / artifact
+
+Name, repo link, owner
+
+## Deploy
+
+Trigger, pipeline link, rollback (revert tag / redeploy prior artifact)
+
+## Smoke checks
+
+- Check 1
+- Check 2
+
+## Known limitations
+
+Explicit non-goals
+
+## Incident
+
+Where to report (SECURITY.md), what to include, what not to paste publicly
+```
+
+## Related work
+
+- [Architecture Principles](./architecture-principles)
+- [Azure Solutions Architect Expert](../certifications/azure-architect)
+- [SECURITY.md](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/SECURITY.md)

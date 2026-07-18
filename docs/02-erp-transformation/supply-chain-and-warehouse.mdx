@@ -1,0 +1,97 @@
+---
+title: Supply Chain and Warehouse
+description: 'Sanitized warehouse and supply-chain patterns for mid-market ERP—barcode discipline, transaction timing, and location integrity.'
+sidebar_position: 2
+tags: [warehouse, supply-chain, barcode, sage-100, portfolio-patterns]
+---
+
+# Supply Chain and Warehouse
+
+Warehouse operations are where ERP truth is won or lost. A system of record is only as reliable as the moment a quantity, location, or lot is captured—and whether that capture happens **before** downstream processes assume it is correct.
+
+:::info Portfolio architecture example
+
+This page describes **sanitized patterns** for mid-market distribution and warehouse contexts (including Sage 100–class inventory modules). It is not a case study of any named client or employer deployment.
+
+:::
+
+## Design goal
+
+Align **physical movement**, **scan events**, and **ERP transactions** so that inventory, allocation, and fulfillment reports describe the same reality.
+
+## Reference operating model
+
+```text
+Receive → Identify → Putaway → Allocate → Pick → Pack → Ship → Confirm
+   ↑         ↑          ↑          ↑        ↑      ↑      ↑        ↑
+ barcode   item/lot   location   FIFO/    scan   weight  carrier  POD /
+ capture   validation   master     rules    at     check   label    exception
+                              pick face
+```
+
+## Pattern 1: Scan-at-event, not scan-at-end-of-shift
+
+**Problem:** Batch entry at shift close hides timing errors, mis-picks, and location drift.
+
+**Pattern:** Require a scan (or validated manual entry with reason code) at the event boundary—receive, putaway, pick confirm, pack confirm, ship confirm.
+
+**Evidence to retain:** Timestamp, operator, device, item, quantity, from-location, to-location, exception code.
+
+## Pattern 2: Location master before velocity
+
+**Problem:** High transaction volume on a bad location model produces fast wrong answers.
+
+**Pattern:** Stabilize location hierarchy (zone → aisle → bin), pick-face rules, and mixed-SKU policies before optimizing pick paths or automation.
+
+**Portfolio checklist:**
+
+- [ ] Every active pick location exists in master data
+- [ ] Non-pick locations are blocked from allocation
+- [ ] Temporary/staging locations have explicit lifecycle rules
+- [ ] Cycle count covers pick faces at a defined cadence
+
+## Pattern 3: Barcode symbology and label governance
+
+**Problem:** Multiple label formats across vendors and internal reprints create silent mismatches at scan time.
+
+**Pattern:** Define allowed symbologies, internal item ID vs. vendor UPC usage, and reprint authorization. Treat label changes as master-data changes with effective dates.
+
+## Pattern 4: Exception paths are first-class
+
+**Problem:** Happy-path-only designs push operators into offline spreadsheets when reality diverges.
+
+**Pattern:** Document and instrument exceptions—short pick, over pick, damaged receipt, wrong lot, partial shipment—with reason codes that post to ERP instead of side systems.
+
+| Exception          | Minimum capture                                          |
+| ------------------ | -------------------------------------------------------- |
+| Short pick         | Requested qty, picked qty, substitute policy decision    |
+| Over receipt       | PO qty, received qty, quarantine disposition             |
+| Location not found | Expected location, physical finding, adjustment workflow |
+
+## Pattern 5: Integration handoff boundaries
+
+**Problem:** WMS, shipping, and ERP each maintain partial truth.
+
+**Pattern:** Define **system of record** per entity (inventory quantity, shipment status, tracking number, cost layer). Integration should move state forward with idempotent messages and reconciliation reports—not overwrite without audit.
+
+## Metrics that support transformation (portfolio examples)
+
+These are diagnostic indicators, not guaranteed KPI outcomes:
+
+- Scan compliance rate by process step
+- Cycle count accuracy by location class
+- Pick exception rate by reason code
+- Days from receipt to available-to-promise
+- Shipment confirm lag (pack complete → ERP ship confirm)
+
+## Anti-patterns to avoid
+
+- Reporting go-live before location master is trustworthy
+- Allowing negative available quantity as a normal state
+- Barcode on label but manual key entry as default
+- Treating shipping software as inventory system of record
+
+## Relationship to other topics
+
+- [FIFO and Inventory Costing](./fifo-and-inventory-costing) — costing depends on correct movement timing
+- [ERP Data Quality](./erp-data-quality) — item master and UOM errors surface first in the warehouse

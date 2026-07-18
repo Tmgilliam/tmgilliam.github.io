@@ -1,0 +1,61 @@
+---
+title: 'ADR-001: Portfolio Platform'
+description: Decision to use Docusaurus as the public portfolio documentation platform for recruiter-quality technical proof.
+sidebar_position: 2
+tags: [adr, docusaurus, portfolio]
+---
+
+# ADR-001: Portfolio Platform (Docusaurus)
+
+## Status
+
+**Accepted** — July 2026
+
+## Context
+
+Dr. Tatianna Gilliam's public proof spans multiple GitHub repositories, blog-style narratives, architecture patterns, ADRs, and certification evidence. Recruiters and technical reviewers need:
+
+- Fast full-text search and navigation
+- Version-controlled docs adjacent to site source
+- MDX for diagrams (Mermaid), admonitions, and structured sections
+- Static hosting compatible with GitHub Pages
+- Low maintenance overhead for a solo-maintained portfolio
+
+Alternatives considered: plain GitHub README-only profile (insufficient depth), Notion or PDF exports (weak developer workflow), custom React site (higher maintenance), MkDocs (viable but less integrated blog/docs UX).
+
+## Decision
+
+Use **Docusaurus 3** (`@docusaurus/preset-classic`) with:
+
+- Docs plugin for structured portfolio sections
+- Blog plugin for dated articles and drafts
+- `@docusaurus/theme-mermaid` for architecture diagrams
+- GitHub Pages-oriented static `build/` output
+
+Repository: [tmgilliam.github.io](https://github.com/Tmgilliam/tmgilliam.github.io) (this site).
+
+## Consequences
+
+### Positive
+
+- Single repo for docs, blog, and deployment workflow
+- Familiar OSS stack with strong SEO and accessibility defaults
+- MDX + Mermaid supports recruiter-friendly architecture storytelling
+- CI can enforce link integrity (`onBrokenLinks: 'throw'`)
+
+### Negative
+
+- Requires Node.js toolchain for local preview and build
+- Docusaurus versioning adds upgrade work over time
+- Default template content must be removed to avoid confusion
+
+### Follow-ups
+
+- Replace default navbar, footer, and `intro` tutorial docs with portfolio structure
+- Configure `url`, `baseUrl`, `organizationName`, and `projectName` for production GitHub Pages
+- Add GitHub Actions workflow for deploy on main (when ready)
+
+## References
+
+- [Docusaurus documentation](https://docusaurus.io/)
+- [ADR-003: Static Deployment](./adr-003-static-deployment)

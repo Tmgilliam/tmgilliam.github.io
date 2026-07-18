@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: BBI AI Readiness Diagnostic Kit
+    url: https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/issues
+    about: Issues for the flagship diagnostic toolkit (separate repository)
+  - name: Security policy
+    url: https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/SECURITY.md
+    about: Read SECURITY.md before reporting vulnerabilities publicly

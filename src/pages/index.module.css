@@ -1,23 +1,159 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+.hero {
+  background:
+    radial-gradient(circle at top right, rgba(224, 190, 104, 0.16), transparent 40%),
+    linear-gradient(160deg, #10141c 0%, #1a2740 55%, #10141c 100%);
+  color: #f4f4f0;
+  padding: 4.5rem 0 3.5rem;
+  border-bottom: 1px solid rgba(224, 190, 104, 0.25);
+}
 
-.heroBanner {
-  padding: 4rem 0;
+.heroInner {
+  max-width: 58rem;
+}
+
+.eyebrow {
+  color: var(--mtp-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin: 0 0 0.75rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  margin: 0 0 0.85rem;
+  color: #f4f4f0;
+}
+
+.heroRole {
+  font-size: 1.2rem;
+  color: #d7deea;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.heroLead {
+  font-size: 1.15rem;
+  max-width: 42rem;
+  color: #c3ccd9;
+  margin: 0 0 1.75rem;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.authority {
+  background: color-mix(in srgb, var(--mtp-gold) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--mtp-gold) 30%, transparent);
+  padding: 1.1rem 0;
+}
+
+.authorityLine {
+  margin: 0;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.section {
+  padding: 3.5rem 0;
+}
+
+.alt {
+  background: color-mix(in srgb, var(--mtp-navy) 8%, transparent);
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.pillarCard,
+.statusColumn,
+.proofLink {
+  background: color-mix(in srgb, var(--mtp-navy) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+[data-theme='light'] .pillarCard,
+[data-theme='light'] .statusColumn,
+[data-theme='light'] .proofLink {
+  background: #fffdf8;
+}
+
+.pillarCard h3,
+.statusColumn h3 {
+  margin-top: 0;
+}
+
+.impactList,
+.legacyList {
+  columns: 2;
+  gap: 1.5rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.proofLink {
+  display: block;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.proofLink:hover {
+  border-color: var(--mtp-gold);
+}
+
+.roadmapNote {
+  margin-top: 1.25rem;
+}
+
+.bbiSection {
+  padding: 3.75rem 0;
+  background:
+    linear-gradient(135deg, rgba(16, 20, 28, 0.96), rgba(26, 39, 64, 0.96)),
+    var(--mtp-charcoal);
+  color: #f4f4f0;
+}
+
+.bbiSection :global(h2),
+.bbiSection :global(p) {
+  color: #f4f4f0;
+}
+
+.bbiSecondary {
+  max-width: 48rem;
+  margin: 0 0 1.5rem;
+  color: #c3ccd9;
+}
+
+.closing {
+  text-align: center;
+}
+
+.closing h2 {
+  margin-bottom: 1.25rem;
+}
+
+.closing .ctaRow {
+  justify-content: center;
 }
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+  .grid3 {
+    grid-template-columns: 1fr;
   }
-}
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .impactList,
+  .legacyList {
+    columns: 1;
+  }
 }

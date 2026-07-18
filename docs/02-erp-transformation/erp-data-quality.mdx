@@ -1,0 +1,117 @@
+---
+title: ERP Data Quality
+description: 'Foundations for trustworthy ERP data—master data discipline, transaction hygiene, and evidence for exceptions before analytics or AI.'
+sidebar_position: 4
+tags: [data-quality, erp, master-data, portfolio-patterns]
+---
+
+# ERP Data Quality
+
+Analytics, automation, and AI inherit ERP data quality. When item master, units of measure, customer hierarchy, or open transaction hygiene are weak, downstream systems produce confident wrong answers.
+
+:::info Portfolio architecture example
+
+This page describes **sanitized data-quality patterns** for mid-market ERP transformation. Examples use representative distribution and inventory scenarios—not confidential client or employer records.
+
+:::
+
+## Definition of quality (operational)
+
+ERP data is **fit for use** when a downstream consumer can answer:
+
+1. What entity does this key refer to?
+2. What event happened, when, and in what quantity?
+3. What evidence exists if the record is challenged?
+4. What is known vs. assumed vs. missing?
+
+## Data domains and typical failure modes
+
+| Domain              | What breaks                                   | Downstream impact                           |
+| ------------------- | --------------------------------------------- | ------------------------------------------- |
+| Item master         | Duplicate IDs, wrong UOM, inactive items sold | Pick errors, bad margin, bad forecasts      |
+| Customer / ship-to  | Stale addresses, merged accounts              | Revenue attribution, credit, service levels |
+| Vendor              | Lead time defaults, bad payment terms         | Planning noise, accrual mismatch            |
+| BOM / kit (if used) | Phantom components, rounding                  | Allocation and cost explosion errors        |
+| Open transactions   | Unposted batches, stuck integrations          | False ATP, month-end surprises              |
+
+## Pattern 1: Master data ownership matrix
+
+Every critical field has a **named owner**, **source of truth**, and **change workflow**.
+
+```text
+Field group â†’ Owner role â†’ Authoritative system â†’ Change ticket / approval â†’ Effective date
+```
+
+Without ownership, "data cleanup" becomes a recurring hero project.
+
+## Pattern 2: Reason codes as quality instrumentation
+
+Treat reason codes on adjustments, overrides, and manual entries as **quality telemetry**, not annoyance fields.
+
+Portfolio examples:
+
+- `CYCLE-COUNT-ADJ` — physical vs. system variance
+- `UOM-CONVERSION-ERR` — caught at receipt or pick
+- `INTEGRATION-REPLAY` — idempotent repost from WMS/shipping
+- `MASTER-DATA-FIX` — corrected item attribute with approver
+
+Trend reason codes before blaming operators or integrations.
+
+## Pattern 3: Key integrity rules before integration scale
+
+Minimum public-safe checklist:
+
+- [ ] Unique item identifiers with documented alias policy (UPC, vendor SKU, legacy ID)
+- [ ] UOM conversion table tested with edge quantities
+- [ ] Status flags enforced (inactive, discontinued, non-stock)
+- [ ] Customer and ship-to merge/archive policy
+- [ ] Duplicate detection report on a schedule
+
+## Pattern 4: Evidence bundle for exceptions
+
+When a number is disputed, an evidence bundle should exist:
+
+- Source transaction IDs and timestamps
+- Operator or integration message ID
+- Related document (PO, receipt, pick, shipment)
+- Approval record for manual override
+- Reconciliation note if timing difference explains variance
+
+This discipline supports finance, operations, and future AI governance—not just audit.
+
+## Pattern 5: Data-quality gates for AI readiness
+
+Before adding models or agents on ERP data, assess:
+
+| Gate             | Question                                                             |
+| ---------------- | -------------------------------------------------------------------- |
+| Decision clarity | What decision improves if the signal is right?                       |
+| Label truth      | Can outcomes be verified against source transactions?                |
+| Coverage         | What percentage of volume is excluded by bad keys or missing fields? |
+| Latency          | Is data fresh enough for the decision window?                        |
+| Human oversight  | Who intervenes when the signal conflicts with operations?            |
+
+The [AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic) formalizes several of these checks in a runnable public tool.
+
+## Measurement examples (not production claims)
+
+Portfolio diagnostic metrics teams often track during transformation:
+
+- Master data exception rate by domain
+- Percent of shipments with complete scan chain
+- Open integration error queue age
+- Repeat adjustment rate by item / location
+- Percent of revenue through items passing quality rules
+
+## Anti-patterns
+
+- "Clean data later" after AI pilot launch
+- Spreadsheet shadow systems without reconciliation path
+- One-time purge without ownership or prevention rules
+- Reporting KPIs on uncorrected historical keys
+
+## Related work
+
+- [Supply Chain and Warehouse](./supply-chain-and-warehouse)
+- [FIFO and Inventory Costing](./fifo-and-inventory-costing)
+- [ERP AI Delay Risk](../ai-ml-systems/erp-delay-risk) — ML requires explicit label and feature hygiene

@@ -1,19 +1,54 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+ai-governance:
+  label: AI Governance
+  permalink: /ai-governance
+  description: Human authority, evidence boundaries, and responsible AI operating patterns
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+evidence-first:
+  label: Evidence First
+  permalink: /evidence-first
+  description: Claims traced to code, tests, examples, or labeled assumptions
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+ai-readiness:
+  label: AI Readiness
+  permalink: /ai-readiness
+  description: Assessment and gates before AI implementation spend
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+enterprise-ai:
+  label: Enterprise AI
+  permalink: /enterprise-ai
+  description: AI systems in enterprise operational and decision contexts
+
+agents:
+  label: Agents
+  permalink: /agents
+  description: Agentic systems, tool use, and execution patterns
+
+human-in-the-loop:
+  label: Human in the Loop
+  permalink: /human-in-the-loop
+  description: Explicit human oversight for consequential decisions
+
+governed-ai:
+  label: Governed AI
+  permalink: /governed-ai
+  description: Authorization, permissions, and verification for AI execution
+
+erp:
+  label: ERP
+  permalink: /erp
+  description: Enterprise resource planning transformation and data foundations
+
+transformation:
+  label: Transformation
+  permalink: /transformation
+  description: Modernization, adoption, and operating model change
+
+ai-adoption:
+  label: AI Adoption
+  permalink: /ai-adoption
+  description: Practical adoption paths for AI on operational data
+
+data-quality:
+  label: Data Quality
+  permalink: /data-quality
+  description: Master data, transaction hygiene, and trustworthy signals

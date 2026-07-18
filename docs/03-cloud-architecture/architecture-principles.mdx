@@ -1,0 +1,100 @@
+---
+title: Architecture Principles
+description: 'Evidence-first cloud architecture principles—boundaries, reuse, security defaults, and honest labeling in public portfolio work.'
+sidebar_position: 2
+tags: [architecture, principles, azure, evidence-first]
+---
+
+# Architecture Principles
+
+These principles guide how public portfolio systems are designed—and how private operating systems are **safely distilled** into public proof without leaking confidential detail.
+
+## 1. Evidence before scale
+
+Scale amplifies whatever is already weak: data quality, identity boundaries, unclear ownership, or unverified claims.
+
+**Practice:**
+
+- Prove locally or in CI before provisioning shared environments
+- Tie architecture diagrams to repos, tests, or labeled assumptions
+- Ship a minimal hero use case before expanding surface area
+
+**Public example:** The [AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic) runs with Python stdlib only, passes unit tests, and documents limitations before any cloud dependency.
+
+## 2. Public proof boundary
+
+Not every internal system belongs in public GitHub. The boundary rule:
+
+> Publish **methods, patterns, and sanitized examples**—not confidential records, client data, employer secrets, or private operating telemetry.
+
+See [ADR-002: Public Proof Boundary](../architecture-decisions/adr-002-public-proof-boundary) for the decision record used by this portfolio.
+
+## 3. Least privilege and secret hygiene
+
+**Defaults:**
+
+- Scoped service principals and roles—not subscription Owner for apps
+- Secrets in vault or CI secret stores—not committed files
+- Separate dev/test/prod identity where multi-environment repos warrant it
+- Human approval for consequential infrastructure changes
+
+## 4. Modular, testable infrastructure
+
+Infrastructure as code should be readable, composable, and verifiable:
+
+- Parameters for environment differences, not forked copies
+- Modules with clear inputs/outputs (Bicep, Terraform, or CloudFormation in public repos)
+- CI validation (`what-if`, lint, unit tests for templates where applicable)
+- Documented rollback or destroy path for lab resources
+
+:::tip Portfolio labeling
+
+When a Bicep or Terraform module appears in a public repo, describe what the module **demonstrates** (network segmentation pattern, managed identity wiring) rather than implying enterprise-wide rollout.
+
+:::
+
+## 5. Separate concerns across layers
+
+| Layer         | Question it answers                       |
+| ------------- | ----------------------------------------- |
+| Data          | What is stored, retention, classification |
+| Application   | Business logic, APIs, batch jobs          |
+| Identity      | Who/what can act                          |
+| Platform      | Compute, storage, messaging               |
+| Observability | Health, logs, traces, alerts              |
+| Governance    | Approval, audit, public proof gate        |
+
+ERP and AI workloads fail when these layers collapse into a single "magic pipeline" without owners.
+
+## 6. Static-first when live systems add no value
+
+Documentation sites, diagnostic CLIs, and methodology guides do not require always-on cloud spend. [ADR-003: Static Deployment](../architecture-decisions/adr-003-static-deployment) records why this portfolio site uses static GitHub Pages delivery.
+
+## 7. Honest status labels
+
+Use explicit status in README files and docs:
+
+- **Shipped** — tagged release, tests, documented quick start
+- **Prototype** — exploratory code path, incomplete hardening
+- **Planned** — scoped but not yet public
+- **Portfolio example** — sanitized pattern without production claim
+
+## 8. Human authority for consequential automation
+
+Agent and automation patterns require explicit authorization, tool scope, execution receipts, and escalation—see [Governed Agent Systems](../enterprise-ai/governed-agent-systems) (planned reference).
+
+## Architecture review checklist (public repos)
+
+Before calling a repository "architecture evidence," verify:
+
+- [ ] README answers problem, audience, quick start, evidence, limitations
+- [ ] CI or test instructions exist and pass
+- [ ] No secrets or private data in history
+- [ ] Claims match code—not aspirational roadmaps labeled as shipped
+- [ ] License and security reporting paths exist
+
+## Further reading
+
+- [Deployment and Observability](./deployment-and-observability)
+- [PUBLIC_PROOF_GATE.md](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/PUBLIC_PROOF_GATE.md)
+- [Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/azure/well-architected/) — external reference for pillar vocabulary

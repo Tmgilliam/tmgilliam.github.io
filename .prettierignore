@@ -1,0 +1,10 @@
+build
+.docusaurus
+node_modules
+package-lock.json
+static/img
+*.png
+*.jpg
+*.jpeg
+*.ico
+*.svg

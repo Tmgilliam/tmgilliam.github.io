@@ -1,0 +1,65 @@
+---
+title: Governed Agent Systems
+description: Planned public reference for human authorization, tool permissions, evidence boundaries, and execution verification in agentic systems.
+sidebar_position: 3
+tags: [ai-governance, agents, human-in-the-loop, planned]
+---
+
+# Governed Agent Systems
+
+:::caution Forthcoming — not yet shipped
+
+This page describes **planned public work**, not a released product or production deployment. No repository link is listed here because the reference has not passed the [Public Proof Gate](https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/PUBLIC_PROOF_GATE.md) for public release.
+
+:::
+
+## Why this matters
+
+Agentic systems amplify both value and risk. Without explicit boundaries, teams inherit opaque tool access, unreviewed execution, missing evidence trails, and unclear escalation when automation fails.
+
+Governed agent execution means:
+
+- **Human authorization** before consequential actions
+- **Tool permissions** scoped to the task—not global admin access
+- **Evidence boundaries** that separate facts, assumptions, and recommendations
+- **Execution receipts** that show what ran, with what inputs, and what changed
+- **Verification and escalation** when results cannot be confirmed
+
+## Planned deliverable
+
+**Governed Agent Execution Patterns** — a public reference covering:
+
+| Pattern area        | Intent                                               |
+| ------------------- | ---------------------------------------------------- |
+| Authorization model | Who can approve what, and when approval expires      |
+| Tool permissions    | Least-privilege tool access with auditable scope     |
+| Evidence boundaries | What the agent may cite vs. infer vs. recommend      |
+| Execution receipts  | Structured record of actions taken and outcomes      |
+| Failure handling    | Safe stop, rollback guidance, and human handoff      |
+| Verification        | Post-execution checks before source-of-truth updates |
+
+This work is tracked on the [BBI public proof project board](https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1) and will ship **after** the [AI Readiness Diagnostic](./ai-readiness-diagnostic) foundation is stable.
+
+## Relationship to shipped work
+
+The diagnostic kit establishes **readiness**—whether a use case has enough clarity, data, oversight, governance, delivery capacity, and evidence to justify the next step.
+
+Governed agent patterns will address **execution**—how authorized automation runs once readiness is established.
+
+## What this page is not
+
+- Not a claim that governed agents are deployed in any private or client environment
+- Not a substitute for legal, security, or compliance review
+- Not an endorsement of unattended autonomous action for high-consequence decisions
+
+## Status
+
+| Milestone                    | Status      |
+| ---------------------------- | ----------- |
+| Problem definition and scope | In progress |
+| Public-safe pattern catalog  | Planned     |
+| Runnable examples            | Planned     |
+| Tests and CI                 | Planned     |
+| Tagged public release        | Not started |
+
+Check the [Brilliant Brainstorm Intelligence organization](https://github.com/Brilliant-Brainstorm-Intelligence-LLC) for updates when this reference ships.
