@@ -48,6 +48,41 @@ export default function ArchitecturePage(): ReactElement {
             </Link>
           </li>
         </ul>
+
+        <Heading as="h2" id="bbios-private-architecture">
+          BBIOS — private architecture summary
+        </Heading>
+        <p>
+          BBIOS is a private, human-governed operating system for evidence, decision
+          control, authorized execution, and operational verification.
+        </p>
+        <p>
+          It is a local-first operating architecture for capturing work, routing
+          decisions, controlling execution, verifying outcomes, and preserving evidence.
+        </p>
+        <ul>
+          <li>
+            <strong>Private system</strong>
+          </li>
+          <li>
+            <strong>Source repository not public</strong>
+          </li>
+          <li>
+            <strong>No proprietary implementation details disclosed</strong>
+          </li>
+        </ul>
+        <p>
+          Public proof for related ideas appears in the AI readiness kit, governed-agent
+          documentation, and the BBI public engineering roadmap — not via BBIOS source
+          access.
+        </p>
+        <p>
+          <Link href="/projects">Browse public projects</Link>
+          {' · '}
+          <Link href="https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1">
+            Follow BBI public engineering
+          </Link>
+        </p>
       </main>
     </Layout>
   );

@@ -70,14 +70,21 @@ const config: Config = {
       {
         name: 'description',
         content:
-          'Executive technical portfolio for Dr. Tatianna Gilliam — enterprise AI, cloud architecture, ERP transformation, and governed systems.',
+          'Executive technical portfolio for Dr. Tatianna Gilliam — enterprise AI, human-in-the-loop systems, AI readiness, ERP transformation, AI governance, enterprise architecture, and Azure architecture with public technical proof.',
+      },
+      {
+        name: 'keywords',
+        content:
+          'enterprise AI, human-in-the-loop systems, AI readiness, ERP transformation, AI governance, enterprise architecture, data quality, operational intelligence, governed agents, Azure architecture',
       },
       {name: 'twitter:card', content: 'summary_large_image'},
       {
         property: 'og:description',
         content:
-          'Enterprise AI, cloud architecture, ERP transformation, and governed systems with public technical proof.',
+          'Enterprise AI, human-in-the-loop systems, ERP transformation, AI governance, and Azure architecture with public technical proof.',
       },
+      {property: 'og:image', content: 'https://tmgilliam.github.io/img/social-card.png'},
+      {name: 'twitter:image', content: 'https://tmgilliam.github.io/img/social-card.png'},
     ],
     colorMode: {
       defaultMode: 'dark',
@@ -171,7 +178,7 @@ const config: Config = {
         url: 'https://tmgilliam.github.io',
         jobTitle: 'Enterprise AI & Cloud Architect',
         description:
-          'Enterprise AI, cloud architecture, ERP transformation, and governed systems.',
+          'Enterprise AI, human-in-the-loop systems, AI readiness, ERP transformation, AI governance, and Azure architecture.',
         sameAs: [
           'https://github.com/Tmgilliam',
           'https://www.linkedin.com/in/drtatianna-dba',
