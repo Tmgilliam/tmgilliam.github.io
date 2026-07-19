@@ -3,9 +3,7 @@ export type PublicProofGate = 'Passed' | 'In Review' | 'Not Started';
 
 /** Primary catalog section (each project appears once; featured is an overlay). */
 export type ProjectSection =
-  | 'engineering-governance'
-  | 'enterprise-transformation'
-  | 'ai-governed';
+  'engineering-governance' | 'enterprise-transformation' | 'ai-governed';
 
 export type Project = {
   id: string;
@@ -123,7 +121,10 @@ export const projects: Project[] = [
     evidence: [
       {label: 'Live site', url: 'https://tmgilliam.github.io'},
       {label: 'Repository', url: 'https://github.com/Tmgilliam/tmgilliam.github.io'},
-      {label: 'Release v0.1.0', url: 'https://github.com/Tmgilliam/tmgilliam.github.io/releases/tag/v0.1.0'},
+      {
+        label: 'Release v0.1.0',
+        url: 'https://github.com/Tmgilliam/tmgilliam.github.io/releases/tag/v0.1.0',
+      },
     ],
     repositoryUrl: 'https://github.com/Tmgilliam/tmgilliam.github.io',
     demoUrl: 'https://tmgilliam.github.io',

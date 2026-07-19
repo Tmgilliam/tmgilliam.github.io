@@ -195,7 +195,9 @@
   text-decoration: none;
   color: inherit;
   min-height: 11rem;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .proofCard:hover {

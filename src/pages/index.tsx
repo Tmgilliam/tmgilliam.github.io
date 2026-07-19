@@ -224,11 +224,7 @@ function BbiosLoopDiagram(): ReactElement {
                 {label}
               </text>
               {index < 6 ? (
-                <path
-                  d={`M ${x + 90} 72 H ${x + 98}`}
-                  stroke="#6F86A8"
-                  strokeWidth="2"
-                />
+                <path d={`M ${x + 90} 72 H ${x + 98}`} stroke="#6F86A8" strokeWidth="2" />
               ) : null}
             </g>
           );
@@ -479,8 +475,9 @@ export default function Home(): ReactElement {
             />
             <article className={styles.bbiosCard}>
               <p>
-                A local-first operating architecture for capturing work, routing decisions,
-                controlling execution, verifying outcomes, and preserving evidence.
+                A local-first operating architecture for capturing work, routing
+                decisions, controlling execution, verifying outcomes, and preserving
+                evidence.
               </p>
               <ul className={styles.boundaryList}>
                 <li>Private system</li>
@@ -517,7 +514,10 @@ export default function Home(): ReactElement {
               >
                 Follow BBI public engineering
               </Link>
-              <Link className="button button--secondary button--lg" href="https://bbiedge.com">
+              <Link
+                className="button button--secondary button--lg"
+                href="https://bbiedge.com"
+              >
                 Visit BBI Edge
               </Link>
             </div>

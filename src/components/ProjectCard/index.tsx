@@ -12,10 +12,7 @@ type Props = {
 
 export default function ProjectCard({project, compact = false}: Props): ReactElement {
   return (
-    <article
-      id={project.id}
-      className={clsx(styles.card, compact && styles.compact)}
-    >
+    <article id={project.id} className={clsx(styles.card, compact && styles.compact)}>
       <div className={styles.meta}>
         <span className={styles.status}>{project.status}</span>
         <span className={styles.gate}>Proof Gate: {project.publicProofGate}</span>

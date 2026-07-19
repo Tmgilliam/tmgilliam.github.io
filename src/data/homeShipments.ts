@@ -17,8 +17,7 @@ export const recentShipments: Shipment[] = [
   {
     id: 'ai-readiness-v010',
     title: 'BBI AI Readiness Diagnostic Kit v0.1.0',
-    summary:
-      'Released with CI, CodeQL, Scorecard, typed checks, testing, and coverage.',
+    summary: 'Released with CI, CodeQL, Scorecard, typed checks, testing, and coverage.',
     evidence: [
       {
         label: 'Release',

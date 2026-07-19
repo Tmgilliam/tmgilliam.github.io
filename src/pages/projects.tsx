@@ -49,8 +49,8 @@ export default function ProjectsPage(): ReactElement {
 
         <Heading as="h2">Featured Systems</Heading>
         <p>
-          Strongest recruiter-facing proof surfaces. Approximately five systems—breadth with
-          signal.
+          Strongest recruiter-facing proof surfaces. Approximately five systems—breadth
+          with signal.
         </p>
         <ProjectGrid items={featuredProjects} />
 
@@ -78,14 +78,15 @@ export default function ProjectsPage(): ReactElement {
 
         <Heading as="h2">AI &amp; Governed Systems</Heading>
         <p>
-          Released and active AI artifacts appear in Featured. This section holds additional
-          non-featured AI/governance systems when present.
+          Released and active AI artifacts appear in Featured. This section holds
+          additional non-featured AI/governance systems when present.
         </p>
         <ProjectGrid items={aiGoverned} />
         {!aiGoverned.length ? (
           <p>
-            Featured AI systems: AI Readiness Diagnostic Kit and ERP AI Delay Risk. Planned
-            companions (interactive assessment, governed agent patterns) are below.
+            Featured AI systems: AI Readiness Diagnostic Kit and ERP AI Delay Risk.
+            Planned companions (interactive assessment, governed agent patterns) are
+            below.
           </p>
         ) : null}
 
