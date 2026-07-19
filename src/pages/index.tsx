@@ -322,6 +322,72 @@ export default function Home(): ReactElement {
           </div>
         </section>
 
+        <section
+          className={styles.researchFoundation}
+          aria-labelledby="research-foundation-title"
+        >
+          <div className="container">
+            <div className={styles.researchInner}>
+              <div className={styles.researchIcon} aria-hidden="true">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M8 7h8M8 11h6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+              <div className={styles.researchCopy}>
+                <p className={styles.researchEyebrow}>Doctoral foundation</p>
+                <Heading as="h2" id="research-foundation-title">
+                  Research Foundation
+                </Heading>
+                <p className={styles.researchLead}>
+                  This portfolio is informed by doctoral research into ERP implementation
+                  strategies in manufacturing organizations. That inquiry now extends into
+                  enterprise architecture, AI governance, cloud transformation, and
+                  evidence-first operational systems.
+                </p>
+                <div className={styles.researchActions}>
+                  <Link
+                    className="button button--primary"
+                    href="https://scholarworks.waldenu.edu/dissertations/12693"
+                  >
+                    Read the Doctoral Research
+                  </Link>
+                  <Link
+                    className="button button--secondary"
+                    href="/docs/research/research-overview"
+                  >
+                    Portfolio research summary
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <MissionControl />
 
         <section className={styles.section}>

@@ -56,4 +56,9 @@ export const missionControlTiles: MissionControlLink[] = [
     href: '/docs/engineering-platform/engineering-principles',
     detail: 'Evidence first · Human authority · Privacy · Verification',
   },
+  {
+    label: 'Doctoral Research',
+    href: 'https://scholarworks.waldenu.edu/dissertations/12693',
+    detail: 'ERP implementation strategies — Walden ScholarWorks',
+  },
 ];

@@ -98,8 +98,9 @@ const config: Config = {
       },
       items: [
         {to: '/projects', label: 'Projects', position: 'left'},
-        {to: '/ecosystem', label: 'Ecosystem', position: 'left'},
+        {to: '/docs/research/research-overview', label: 'Research', position: 'left'},
         {to: '/architecture', label: 'Architecture', position: 'left'},
+        {to: '/ecosystem', label: 'Ecosystem', position: 'left'},
         {to: '/architecture-explorer', label: 'Systems Map', position: 'left'},
         {to: '/speaking', label: 'Speaking', position: 'left'},
         {to: '/docs/erp-transformation/', label: 'ERP Transformation', position: 'left'},
@@ -126,6 +127,7 @@ const config: Config = {
           title: 'Explore',
           items: [
             {label: 'Projects', to: '/projects'},
+            {label: 'Research', to: '/docs/research/research-overview'},
             {label: 'Ecosystem', to: '/ecosystem'},
             {label: 'Architecture', to: '/architecture'},
             {label: 'Systems Map', to: '/architecture-explorer'},
