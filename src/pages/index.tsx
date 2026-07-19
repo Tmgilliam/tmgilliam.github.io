@@ -5,152 +5,303 @@ import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import ProjectCard from '@site/src/components/ProjectCard';
 import SectionHeading from '@site/src/components/SectionHeading';
-import {featuredProjects, projects} from '@site/src/data/projects';
-import {skillGroups} from '@site/src/data/skills';
+import {
+  momentumInProgress,
+  momentumInReview,
+  momentumPlanned,
+  momentumReleased,
+  recentShipments,
+} from '@site/src/data/homeShipments';
+import {featuredProjects} from '@site/src/data/projects';
 import styles from './index.module.css';
 
-type Pillar = {
+type ProofCard = {
   title: string;
-  description: string;
+  value: string;
+  href: string;
+  cta: string;
+};
+
+type EvidenceLane = {
+  title: string;
+  destination: string;
   href: string;
 };
 
-type ImpactSignal = {
-  label: string;
-  evidenceHref?: string;
+type MomentumItem = {
+  id: string;
+  title: string;
+  href?: string;
+  privateLabel?: string;
 };
 
-type CompanyLink = {
-  label: string;
-  href: string;
-};
-
-const pillars: Pillar[] = [
+const proofCards: ProofCard[] = [
   {
-    title: 'Enterprise Systems and ERP Transformation',
-    description:
-      'Designing and improving ERP, warehouse, inventory, costing, and operational data systems. Translating fragmented workflows into controlled enterprise processes and decision-ready information.',
-    href: '/docs/erp-transformation/',
+    title: 'Technical Projects',
+    value: 'Released tools, case studies, and public engineering systems.',
+    href: '/projects',
+    cta: 'Inspect projects',
   },
   {
-    title: 'AI, Data, and Cloud Architecture',
-    description:
-      'Building evidence-first AI and data systems with explicit human authority, clear operating boundaries, testable architecture, and production-minded delivery patterns.',
-    href: '/docs/enterprise-ai/',
-  },
-  {
-    title: 'Executive Technology Leadership',
-    description:
-      'Connecting architecture decisions to business value, implementation risk, organizational adoption, and measurable operational outcomes.',
+    title: 'Architecture Hub',
+    value: 'System boundaries, data flows, ADRs, security models, and tradeoffs.',
     href: '/architecture',
+    cta: 'Inspect architecture',
+  },
+  {
+    title: 'Recent Shipments',
+    value: 'Releases, public milestones, and completed engineering controls.',
+    href: '#recent-shipments',
+    cta: 'Review shipments',
+  },
+  {
+    title: 'BBI Engineering',
+    value: 'Company tools, governance, roadmap, Discussions, and releases.',
+    href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+    cta: 'Open BBI engineering',
+  },
+  {
+    title: 'GitHub Profile',
+    value: 'Repositories, contribution activity, pull requests, and open-source work.',
+    href: 'https://github.com/Tmgilliam',
+    cta: 'View GitHub activity',
   },
 ];
 
-const impactSignals: ImpactSignal[] = [
-  {label: 'Enterprise AI and ERP architecture', evidenceHref: '/architecture'},
-  {label: 'Cross-functional transformation leadership', evidenceHref: '/about'},
+const evidenceLanes: EvidenceLane[] = [
   {
-    label: 'Warehouse, inventory, data-quality, and costing systems',
-    evidenceHref: '/docs/erp-transformation/',
-  },
-  {
-    label: 'Human-in-the-loop AI governance',
-    evidenceHref: '/docs/enterprise-ai/',
-  },
-  {
-    label: 'Public release and open-source engineering',
-    evidenceHref: '/projects',
-  },
-  {
-    label: 'Azure Solutions Architect Expert — AZ-305',
-    evidenceHref: '/docs/certifications/azure-architect',
-  },
-];
-
-const erpProof = [
-  {
-    title: 'Warehouse and barcode transformation',
-    href: '/docs/erp-transformation/supply-chain-and-warehouse',
-  },
-  {
-    title: 'Inventory and costing architecture',
-    href: '/docs/erp-transformation/fifo-and-inventory-costing',
-  },
-  {title: 'ERP data-quality controls', href: '/docs/erp-transformation/erp-data-quality'},
-  {title: 'Stakeholder and adoption decisions', href: '/docs/erp-transformation/'},
-  {
-    title: 'Operational reporting and decision support',
+    title: 'ERP Transformation',
+    destination: 'Sanitized ERP architecture and case studies',
     href: '/docs/erp-transformation/',
   },
-];
-
-const companyLinks: CompanyLink[] = [
   {
-    label: 'Visit BBI Engineering',
-    href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+    title: 'Enterprise AI',
+    destination: 'AI Readiness Diagnostic documentation',
+    href: '/docs/enterprise-ai/ai-readiness-diagnostic',
   },
   {
-    label: 'Explore the AI Readiness Kit',
-    href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit',
+    title: 'Cloud Architecture',
+    destination: 'Azure Landing Zone Reference',
+    href: 'https://github.com/Tmgilliam/azure-landing-zone-reference',
   },
-  {label: 'Visit BBI Edge', href: 'https://bbiedge.com'},
+  {
+    title: 'Governed Systems',
+    destination: 'Human-authority and agent-execution architecture',
+    href: '/docs/enterprise-ai/governed-agent-systems',
+  },
 ];
 
-const legacyThemes = [
-  'Long-horizon systems',
-  'Technical authorship',
-  'Responsible AI',
-  'Enterprise transformation',
-  'Public proof',
-  'Durable intellectual assets',
+const durableProof = [
+  'Public release shipped',
+  'Protected delivery workflow',
+  'Passing CI and security controls',
+  'Published architecture case studies',
+  'Public engineering roadmap',
+  'Active open-source discussions',
 ];
 
-const released = projects.filter((project) => project.status === 'Released');
-const inProgress = projects.filter(
-  (project) => project.status === 'Active' || project.status === 'Case Study',
-);
-const planned = projects.filter((project) => project.status === 'Planned');
+function MomentumList({items}: {items: MomentumItem[]}): ReactElement {
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item.id}>
+          {item.href ? <Link href={item.href}>{item.title}</Link> : item.title}
+          {item.privateLabel ? (
+            <span className={styles.privateLabel}> — {item.privateLabel}</span>
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PublicProofDiagram(): ReactElement {
+  const stages = [
+    {label: 'Approved facts', x: 24},
+    {label: 'Registry', x: 148},
+    {label: 'Privacy check', x: 272},
+    {label: 'Proof Gate', x: 396},
+    {label: 'Human merge', x: 520},
+    {label: 'Live verify', x: 644},
+  ];
+  return (
+    <figure className={styles.diagram} aria-labelledby="diagram-public-proof">
+      <figcaption id="diagram-public-proof" className={styles.diagramCaption}>
+        Public-proof publishing boundary
+      </figcaption>
+      <svg
+        viewBox="0 0 780 200"
+        role="img"
+        aria-label="Approved facts flow through registry, privacy checks, proof gate, human merge, and deployment"
+      >
+        <rect width="780" height="200" rx="12" fill="#141A24" />
+        {stages.map((stage, index) => (
+          <g key={stage.label}>
+            <rect
+              x={stage.x}
+              y="64"
+              width="112"
+              height="52"
+              rx="8"
+              fill="#1A2740"
+              stroke="#E0BE68"
+            />
+            <text
+              x={stage.x + 56}
+              y="95"
+              textAnchor="middle"
+              fill="#F4F4F0"
+              fontSize="12"
+              fontFamily="Segoe UI, Arial, sans-serif"
+            >
+              {stage.label}
+            </text>
+            {index < stages.length - 1 ? (
+              <path
+                d={`M ${stage.x + 114} 90 H ${stage.x + 122}`}
+                stroke="#6F86A8"
+                strokeWidth="2"
+              />
+            ) : null}
+          </g>
+        ))}
+        <text
+          x="390"
+          y="160"
+          textAnchor="middle"
+          fill="#A6B2C4"
+          fontSize="12"
+          fontFamily="Segoe UI, Arial, sans-serif"
+        >
+          Private systems and unapproved claims stay outside the boundary
+        </text>
+      </svg>
+    </figure>
+  );
+}
+
+function BbiosLoopDiagram(): ReactElement {
+  return (
+    <figure className={styles.diagram} aria-labelledby="diagram-bbios-loop">
+      <figcaption id="diagram-bbios-loop" className={styles.diagramCaption}>
+        BBIOS sanitized operating loop
+      </figcaption>
+      <svg
+        viewBox="0 0 720 160"
+        role="img"
+        aria-label="Capture Route Prioritize Execute Verify Update Continue"
+      >
+        <rect width="720" height="160" rx="12" fill="#141A24" />
+        {[
+          'Capture',
+          'Route',
+          'Prioritize',
+          'Execute',
+          'Verify',
+          'Update',
+          'Continue',
+        ].map((label, index) => {
+          const x = 18 + index * 100;
+          return (
+            <g key={label}>
+              <rect
+                x={x}
+                y="48"
+                width="88"
+                height="48"
+                rx="8"
+                fill="#1A2740"
+                stroke="#E0BE68"
+              />
+              <text
+                x={x + 44}
+                y="77"
+                textAnchor="middle"
+                fill="#F4F4F0"
+                fontSize="12"
+                fontFamily="Segoe UI, Arial, sans-serif"
+              >
+                {label}
+              </text>
+              {index < 6 ? (
+                <path d={`M ${x + 90} 72 H ${x + 98}`} stroke="#6F86A8" strokeWidth="2" />
+              ) : null}
+            </g>
+          );
+        })}
+        <text
+          x="360"
+          y="130"
+          textAnchor="middle"
+          fill="#A6B2C4"
+          fontSize="12"
+          fontFamily="Segoe UI, Arial, sans-serif"
+        >
+          Architecture summary only — private system, repository not public
+        </text>
+      </svg>
+    </figure>
+  );
+}
 
 export default function Home(): ReactElement {
   return (
     <Layout
       title="Enterprise AI & Cloud Architect"
-      description="Executive technical portfolio for Dr. Tatianna Gilliam — enterprise AI, cloud architecture, ERP transformation, and governed systems."
+      description="Executive technical portfolio for Dr. Tatianna Gilliam — enterprise AI, human-in-the-loop systems, ERP transformation, AI governance, and Azure architecture with public technical proof."
     >
       <header className={styles.hero}>
         <div className={clsx('container', styles.heroInner)}>
-          <p className={styles.eyebrow}>Master Tech Portfolio</p>
-          <Heading as="h1" className={styles.heroTitle}>
-            Dr. Tatianna Gilliam, DBA
-          </Heading>
-          <p className={styles.heroRole}>
-            Enterprise AI &amp; Cloud Architect
-            <br />
-            ERP Transformation · Governed Agents · Human-in-the-Loop Systems
-          </p>
-          <p className={styles.heroLead}>
-            I turn complex enterprise operations into governed AI and cloud systems that
-            can be inspected, shipped, and trusted.
-          </p>
-          <div className={styles.ctaRow}>
-            <Link className="button button--primary button--lg" to="/projects">
-              View Technical Projects
-            </Link>
-            <Link className="button button--secondary button--lg" to="/architecture">
-              Explore Architecture
-            </Link>
-            <Link
-              className="button button--secondary button--lg"
-              href="https://github.com/Brilliant-Brainstorm-Intelligence-LLC"
-            >
-              Visit BBI Engineering
-            </Link>
-            <Link
-              className="button button--secondary button--lg"
-              href="https://www.linkedin.com/in/drtatianna-dba"
-            >
-              Connect on LinkedIn
-            </Link>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Master Tech Portfolio</p>
+            <Heading as="h1" className={styles.heroTitle}>
+              Dr. Tatianna Gilliam, DBA
+            </Heading>
+            <p className={styles.heroRole}>
+              Enterprise AI &amp; Cloud Architect
+              <br />
+              ERP Transformation · Governed Agents · Human-in-the-Loop Systems
+            </p>
+            <p className={styles.heroLead}>
+              I turn enterprise complexity into governed, evidence-first AI, cloud, and
+              ERP systems that can be inspected, shipped, and trusted.
+            </p>
+            <p className={styles.heroSecondary}>
+              Building BBIOS, a private human-governed operating system for evidence,
+              decision control, authorized execution, and verification.
+            </p>
+            <div className={styles.ctaRow}>
+              <Link className="button button--primary button--lg" to="/projects">
+                View Technical Projects
+              </Link>
+              <Link className="button button--secondary button--lg" to="/architecture">
+                Explore Architecture
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                href="https://github.com/Brilliant-Brainstorm-Intelligence-LLC"
+              >
+                Visit BBI Engineering
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                href="https://www.linkedin.com/in/drtatianna-dba"
+              >
+                Connect on LinkedIn
+              </Link>
+            </div>
+            <p className={styles.heroSupport}>
+              Public releases · Inspectable architecture · Governed delivery
+            </p>
+          </div>
+          <div className={styles.heroPortraitWrap}>
+            <img
+              className={styles.heroPortrait}
+              src="/img/profile/dr-gilliam.jpg"
+              alt="Professional portrait of Dr. Tatianna Gilliam"
+              width={320}
+              height={320}
+            />
           </div>
         </div>
       </header>
@@ -167,91 +318,21 @@ export default function Home(): ReactElement {
         <section className={styles.section}>
           <div className="container">
             <SectionHeading
-              eyebrow="Core pillars"
-              title="Senior problems, system answers"
-              description="Three durable practice areas that connect architecture decisions to operational outcomes."
+              eyebrow="Proof in one click"
+              title="Where to inspect the work"
+              description="Direct destinations for recruiters who want verifiable technical confidence."
             />
-            <div className={styles.grid3}>
-              {pillars.map((pillar) => (
-                <article key={pillar.title} className={styles.pillarCard}>
-                  <Heading as="h3">{pillar.title}</Heading>
-                  <p>{pillar.description}</p>
-                  <Link href={pillar.href}>Explore</Link>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={clsx(styles.section, styles.alt)}>
-          <div className="container">
-            <SectionHeading
-              eyebrow="Impact at a glance"
-              title="Verified signals only"
-              description="No invented metrics. Each statement links to inspectable evidence."
-            />
-            <ul className={styles.impactList}>
-              {impactSignals.map((signal) => (
-                <li key={signal.label}>
-                  {signal.evidenceHref ? (
-                    <Link href={signal.evidenceHref}>{signal.label}</Link>
-                  ) : (
-                    signal.label
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <SectionHeading
-              eyebrow="Featured technical systems"
-              title="Released and active public proof"
-              description="Primary featured work excludes planned items."
-            />
-            <div className={styles.grid3}>
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} compact />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={clsx(styles.section, styles.alt)}>
-          <div className="container">
-            <SectionHeading
-              eyebrow="Architecture strengths"
-              title="Where senior judgment shows up"
-            />
-            <div className={styles.grid3}>
-              {skillGroups.map((group) => (
-                <article key={group.id} className={styles.pillarCard}>
-                  <Heading as="h3">{group.title}</Heading>
-                  <ul>
-                    {group.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                  <Link href={group.href}>Read more</Link>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <SectionHeading
-              eyebrow="ERP transformation proof"
-              title="Sanitized operating patterns"
-              description="No employer names, client identities, proprietary screenshots, or confidential procedures."
-            />
-            <div className={styles.grid3}>
-              {erpProof.map((item) => (
-                <Link key={item.title} className={styles.proofLink} href={item.href}>
-                  {item.title}
+            <div className={styles.proofGrid}>
+              {proofCards.map((card) => (
+                <Link
+                  key={card.title}
+                  className={styles.proofCard}
+                  href={card.href}
+                  aria-label={`${card.title}: ${card.cta}`}
+                >
+                  <Heading as="h3">{card.title}</Heading>
+                  <p>{card.value}</p>
+                  <span className={styles.proofCta}>{card.cta}</span>
                 </Link>
               ))}
             </div>
@@ -261,41 +342,155 @@ export default function Home(): ReactElement {
         <section className={clsx(styles.section, styles.alt)}>
           <div className="container">
             <SectionHeading
-              eyebrow="Current public engineering work"
-              title="Honest status from typed site data"
-              description="Roadmap evidence: BBI Public Engineering Roadmap."
+              id="recent-shipments"
+              eyebrow="Recent Shipments"
+              title="Released and verified public work"
+              description="Only items with live evidence. No hard-coded contribution totals."
             />
-            <div className={styles.grid3}>
+            <div className={styles.shipmentGrid}>
+              {recentShipments.map((shipment) => (
+                <article key={shipment.id} className={styles.shipmentCard}>
+                  <Heading as="h3">{shipment.title}</Heading>
+                  <p>{shipment.summary}</p>
+                  <div className={styles.shipmentLinks}>
+                    {shipment.evidence.map((item) => (
+                      <Link key={`${shipment.id}-${item.label}`} href={item.url}>
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p className={styles.roadmapNote}>
+              <Link href="https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1">
+                Follow BBI public engineering
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className="container">
+            <SectionHeading
+              eyebrow="Evidence lanes"
+              title="Explore substantial destinations"
+              description="Every Explore link lands on documentation or a public repository—not a vanity page."
+            />
+            <div className={styles.proofGrid}>
+              {evidenceLanes.map((lane) => (
+                <Link
+                  key={lane.title}
+                  className={styles.proofCard}
+                  href={lane.href}
+                  aria-label={`Explore ${lane.title}`}
+                >
+                  <Heading as="h3">{lane.title}</Heading>
+                  <p>{lane.destination}</p>
+                  <span className={styles.proofCta}>Explore</span>
+                </Link>
+              ))}
+            </div>
+            <ul className={styles.durableList} aria-label="Durable proof signals">
+              {durableProof.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className={clsx(styles.section, styles.alt)}>
+          <div className="container">
+            <SectionHeading
+              eyebrow="Featured technical systems"
+              title="Released and active public proof"
+              description="Status, proof gate, problem, role, and evidence—without decorative badges or fake completion percentages."
+            />
+            <div className={styles.featuredGrid}>
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+            <p className="margin-top--md">
+              <Link href="/projects">Browse the curated project catalog</Link>
+            </p>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className="container">
+            <SectionHeading
+              eyebrow="Architecture visuals"
+              title="Boundaries and operating flow"
+              description="Diagrams for understanding—not decorative command-center wallpaper."
+            />
+            <div className={styles.diagramStack}>
+              <PublicProofDiagram />
+              <BbiosLoopDiagram />
+            </div>
+          </div>
+        </section>
+
+        <section className={clsx(styles.section, styles.alt)}>
+          <div className="container">
+            <SectionHeading
+              eyebrow="Public Engineering Momentum"
+              title="Milestone-backed states"
+              description="Planned, in review, in progress, released—or clearly labeled private."
+            />
+            <div className={styles.grid4}>
               <div className={styles.statusColumn}>
                 <Heading as="h3">Released</Heading>
-                <ul>
-                  {released.map((project) => (
-                    <li key={project.id}>{project.name}</li>
-                  ))}
-                </ul>
+                <MomentumList items={momentumReleased} />
+              </div>
+              <div className={styles.statusColumn}>
+                <Heading as="h3">In Review</Heading>
+                <MomentumList items={momentumInReview} />
               </div>
               <div className={styles.statusColumn}>
                 <Heading as="h3">In Progress</Heading>
-                <ul>
-                  {inProgress.map((project) => (
-                    <li key={project.id}>{project.name}</li>
-                  ))}
-                </ul>
+                <MomentumList items={momentumInProgress} />
               </div>
               <div className={styles.statusColumn}>
                 <Heading as="h3">Planned</Heading>
-                <ul>
-                  {planned.map((project) => (
-                    <li key={project.id}>{project.name}</li>
-                  ))}
-                </ul>
+                <MomentumList items={momentumPlanned} />
               </div>
             </div>
             <p className={styles.roadmapNote}>
               <Link href="https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1">
-                View the BBI Public Engineering Roadmap
+                Follow BBI public engineering
               </Link>
+              {' · '}
+              <Link href="https://github.com/Tmgilliam">View GitHub activity</Link>
             </p>
+          </div>
+        </section>
+
+        <section className={styles.section} id="bbios-teaser">
+          <div className="container">
+            <SectionHeading
+              eyebrow="Private system case study"
+              title="BBIOS"
+              description="Private human-governed AI operating system — architecture summary only."
+            />
+            <article className={styles.bbiosCard}>
+              <p>
+                A local-first operating architecture for capturing work, routing
+                decisions, controlling execution, verifying outcomes, and preserving
+                evidence.
+              </p>
+              <ul className={styles.boundaryList}>
+                <li>Private system</li>
+                <li>Source repository not public</li>
+                <li>No proprietary implementation details disclosed</li>
+              </ul>
+              <Link
+                className="button button--secondary button--lg"
+                to="/architecture#bbios-private-architecture"
+              >
+                Explore the sanitized architecture
+              </Link>
+            </article>
           </div>
         </section>
 
@@ -304,46 +499,39 @@ export default function Home(): ReactElement {
             <SectionHeading
               eyebrow="Company"
               title="Brilliant Brainstorm Intelligence, LLC"
-              description="Brilliant Brainstorm Intelligence builds governed AI, enterprise architecture, and ERP transformation tools that connect evidence, human authority, execution, and measurable operational outcomes."
+              description="Governed AI, enterprise architecture, and ERP transformation tools that connect evidence, human authority, execution, and measurable operational outcomes."
             />
-            <p className={styles.bbiSecondary}>
-              Public engineering work includes AI readiness diagnostics, governed-agent
-              patterns, architecture standards, and sanitized enterprise transformation
-              case studies.
-            </p>
             <div className={styles.ctaRow}>
-              {companyLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  className="button button--primary button--lg"
-                  href={link.href}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <Link
+                className="button button--primary button--lg"
+                href="https://github.com/Brilliant-Brainstorm-Intelligence-LLC"
+              >
+                Visit BBI Engineering
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                href="https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1"
+              >
+                Follow BBI public engineering
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                href="https://bbiedge.com"
+              >
+                Visit BBI Edge
+              </Link>
             </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <SectionHeading
-              eyebrow="Leadership and Legacy"
-              title="Systems intended to last"
-              description="I build systems intended to last: technical systems, decision systems, public knowledge, reusable methods, and operating standards that improve the quality of work beyond a single project."
-            />
-            <ul className={styles.legacyList}>
-              {legacyThemes.map((theme) => (
-                <li key={theme}>{theme}</li>
-              ))}
-            </ul>
           </div>
         </section>
 
         <section className={clsx(styles.section, styles.closing)}>
           <div className="container">
             <Heading as="h2">
-              Explore the work. Inspect the decisions. Follow the evidence.
+              Explore the work.
+              <br />
+              Inspect the decisions.
+              <br />
+              Follow the evidence.
             </Heading>
             <div className={styles.ctaRow}>
               <Link className="button button--primary button--lg" to="/projects">

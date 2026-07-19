@@ -43,6 +43,14 @@
   color: var(--mtp-muted);
 }
 
+.boundaryNote {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--mtp-muted);
+  border-left: 3px solid color-mix(in srgb, var(--mtp-gold) 70%, transparent);
+  padding-left: 0.75rem;
+}
+
 [data-theme='dark'] .summary {
   color: #a6b2c4;
 }
