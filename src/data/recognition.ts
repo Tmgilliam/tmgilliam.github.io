@@ -72,7 +72,8 @@ export const activeAwardCandidates: RecognitionItem[] = [
     year: '2026',
     status: 'Evidence Gap',
     subject: 'Dr. Tatianna Gilliam',
-    notes: 'Primary deadline 2026-07-22; final 2026-08-19. See awards/submissions/.',
+    notes:
+      'Matrix 68/100 — do not submit below 85. Prefer Aug 19 final only if readiness clears. See awards/submissions/.',
     verificationUrl: 'https://women.stevieawards.com/',
   },
   {
@@ -82,7 +83,7 @@ export const activeAwardCandidates: RecognitionItem[] = [
     year: '2026',
     status: 'Evidence Gap',
     subject: 'Dr. Tatianna Gilliam',
-    notes: 'Nomination deadline 2026-10-01. Self-nomination permitted.',
+    notes: 'Deadline 2026-10-01. Matrix 70/100 — strengthen to ≥85 before nominating.',
     verificationUrl: 'https://www.womentech.net/',
   },
 ];

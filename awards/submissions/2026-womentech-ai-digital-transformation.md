@@ -9,8 +9,8 @@
 | Eligibility period | Previous 12 months through nomination |
 | Entry deadline | 2026-10-01 |
 | Entry fee | Confirm on official form |
-| Submission status | Qualified / Evidence Gap |
-| Readiness score | 70 / 100 |
+| Submission status | Evidence Gap |
+| Readiness score | 70 / 100 (submit only at ≥85) |
 | Self-nomination | Permitted |
 
 ## Center the submission on

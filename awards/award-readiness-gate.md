@@ -1,40 +1,43 @@
-# Award Readiness Gate
+# BBI Award Readiness Matrix
 
-Score every candidate out of 100 before paying fees or submitting.
+Score every project or individual candidacy out of 100 **before** paying fees or submitting.
 
-| Criterion | Points |
-| --- | --- |
-| Problem importance | 10 |
-| Originality and differentiation | 15 |
-| Technical execution | 15 |
-| Measurable impact | 20 |
-| Responsible AI and governance | 15 |
-| User experience and accessibility | 10 |
-| Independent validation | 10 |
-| Submission quality | 5 |
+| Criterion | Weight |
+| --- | ------: |
+| Innovation | 20 |
+| Technical Excellence | 20 |
+| Real Business Impact | 20 |
+| Responsible AI | 15 |
+| UX | 10 |
+| Documentation | 5 |
+| Community Impact | 5 |
+| Presentation Quality | 5 |
 | **Total** | **100** |
 
-## Decision bands
+## Decision rule
 
 ```text
-85–100  Submit
-75–84   Submit only if deadline-sensitive
-60–74   Evidence gaps remain
-Below 60 Do not enter
+85–100  Eligible to submit
+Below 85  Do not submit
 ```
 
-## Automatic blockers
+Deadline pressure does **not** lower the bar. If a prestige deadline arrives below 85, strengthen evidence and use the next deadline or next cycle.
+
+Exception only with explicit founder override recorded in the submission draft (rare; still no invented metrics).
+
+## Automatic blockers (any one fails the entry)
 
 ```text
-No live demonstration (when category requires a product experience)
+No live demonstration (when the category requires a product experience)
 No external validation
 No measurable outcome
 Unsupported claims
 Privacy uncertainty
 Broken links
 Red CI
-Missing accessibility review
+Missing accessibility review for UX-heavy categories
 Planned feature represented as complete
+Vanity / pay-to-display program characteristics
 ```
 
 ## Flagship release rule
@@ -42,20 +45,27 @@ Planned feature represented as complete
 Every flagship release must demonstrate:
 
 ```text
-novelty
-+ execution
-+ impact
+measurable value
++ responsible AI
++ governance
++ transparency
 + usability
-+ responsible operation
++ technical excellence
 + independent evidence
 ```
 
-## Current candidate scores (honest baseline — update as evidence lands)
+## Current candidate scores (honest baseline)
 
-| Candidate | Score | Band | Blockers |
-| --- | --- | --- | --- |
-| Stevie — AI Leader of the Year | 68 | Evidence gaps | Independent validation, quantified 12-month outcomes pack |
-| Stevie — Digital Transformation | 64 | Evidence gaps | Outcome metrics, external testimonials |
-| WomenTech — AI & Digital Transformation Leader | 70 | Evidence gaps | Testimonials, workshop/talk evidence |
-| Webby — Interactive AI Readiness | 42 | Do not enter | Live interactive demo not shipped |
-| CODiE — AI product | 38 | Do not enter | Live UI, adoption, measured outcomes missing |
+| Candidate | Score | Submit? | Primary gaps |
+| --- | ---: | --- | --- |
+| Stevie — AI Leader of the Year | 68 | **No** (use Aug 19 only if ≥85) | Independent validation, quantified outcomes, testimonials |
+| Stevie — Digital Transformation | 64 | **No** | Outcomes, testimonials |
+| WomenTech — AI & Digital Transformation Leader | 70 | **No** until ≥85 | Testimonials, workshop/talk evidence, measurable bullets |
+| Webby — Interactive AI Readiness | 42 | **No** | Live interactive product not shipped |
+| CODiE — AI product | 38 | **No** | Live UI, adoption, measured outcomes |
+| Microsoft MVP pathway | N/A | Pathway, not a form | Learn, Q&A, talks, workshops |
+| GitHub Stars pathway | N/A | External nomination only | Community impact over 12–24 months |
+
+## Relationship to strategy
+
+See `recognition-strategy.md`. Prestige awards are Tier 1 outcomes. Daily priority remains industry credibility and professional recognition around **evidence-first enterprise AI**.

@@ -86,9 +86,19 @@ export default function RecognitionPage(): ReactElement {
           inspectable.
         </p>
         <p>
+          Strategy priority: become known for <strong>evidence-first enterprise AI</strong>
+          —governed systems where consequential actions are authorized, traceable, and
+          supported by evidence. Prestige awards are entered only when the Award Readiness
+          Matrix scores 85 or higher.
+        </p>
+        <p>
           Awards pipeline and evidence pack:{' '}
           <Link href="https://github.com/Tmgilliam/tmgilliam.github.io/tree/main/awards">
             awards/
+          </Link>
+          {' · '}
+          <Link href="https://github.com/Tmgilliam/tmgilliam.github.io/blob/main/awards/recognition-strategy.md">
+            Recognition strategy
           </Link>
         </p>
 

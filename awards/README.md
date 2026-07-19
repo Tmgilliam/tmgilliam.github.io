@@ -2,7 +2,17 @@
 
 **Operating principle:** Do not build a project and later hunt for an award. Select award criteria first, then build the release to satisfy them.
 
-This directory is a **public-safe Award Evidence Pack**. It contains templates, calendars, readiness scoring, and submission drafts suitable for external judges.
+**Reputation principle:** First recognition priority is becoming known for **evidence-first enterprise AI**—not collecting trophies.
+
+Read `recognition-strategy.md` before any submission.
+
+## Three classes of recognition
+
+1. **Prestige awards** — high competition, major brand value (Stevie, Webby, CODiE)
+2. **Industry credibility** — what recruiters, hiring managers, and CTOs recognize
+3. **Professional recognition** — MVP, GitHub Stars, sustained expert positioning
+
+Daily ROI order: **2 → 3 → 1**.
 
 ## Hard privacy boundary
 
@@ -19,6 +29,7 @@ Never place in this pack:
 ```text
 awards/
 ├── README.md
+├── recognition-strategy.md
 ├── awards-calendar.md
 ├── award-readiness-gate.md
 ├── pipeline-schema.md
@@ -31,24 +42,21 @@ awards/
 ├── testimonials.md
 ├── press-and-publications.md
 ├── projects/
-│   ├── ai-readiness-diagnostic.md
-│   ├── mtp-portfolio.md
-│   └── erp-ai-delay-risk.md
 ├── submissions/
-│   ├── 2026-stevie-ai-leader.md
-│   ├── 2026-stevie-digital-transformation.md
-│   └── 2026-womentech-ai-digital-transformation.md
 └── media/
-    ├── logo/.gitkeep
-    ├── screenshots/.gitkeep
-    └── architecture-diagrams/.gitkeep
 ```
 
-## Annual target
+## Submit rule
 
-Four to six highly aligned submissions per year. Prefer competitive programs with published criteria over vanity or pay-to-display badges.
+Award Readiness Matrix score **≥85** required. Below 85: do not submit.
+
+## Annual prestige target
+
+Four to six highly aligned submissions per year—never twenty random badge applications.
 
 ## Related public surfaces
 
-- Portfolio recognition page: `/recognition`
-- BBI Public Engineering Roadmap: https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1
+- Strategy: `recognition-strategy.md`
+- Matrix: `award-readiness-gate.md`
+- Portfolio page: `/recognition`
+- Roadmap: https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1

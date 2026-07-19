@@ -19,10 +19,13 @@
 | Public verification URL | — |
 | Next eligibility date | 2027 cycle if not selected |
 
-## Readiness gate
+## Readiness matrix
 
-**Score: 68 / 100 — Evidence gaps remain**  
-Deadline-sensitive exception possible for primary deadline only if unsupported claims are avoided and gaps are not concealed.
+**Score: 68 / 100 — Do not submit**
+
+Rule: Matrix **≥85** required. July 22 primary deadline is **not** a reason to invent proof.
+
+Plan: strengthen independent validation, testimonials, and quantified public outcomes; reassess before **2026-08-19** final deadline only if score ≥85.
 
 ## Narrative spine (public-safe)
 
