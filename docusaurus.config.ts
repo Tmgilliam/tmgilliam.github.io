@@ -143,6 +143,10 @@ const config: Config = {
             },
             {label: 'Writing', to: '/writing'},
             {label: 'Contact', to: '/contact'},
+            {
+              label: 'Follow BBI public engineering',
+              href: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
+            },
           ],
         },
         {
@@ -154,6 +158,10 @@ const config: Config = {
               href: 'https://www.linkedin.com/in/drtatianna-dba',
             },
             {label: 'BBI Edge', href: 'https://bbiedge.com'},
+            {
+              label: 'BBI Engineering',
+              href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+            },
           ],
         },
       ],

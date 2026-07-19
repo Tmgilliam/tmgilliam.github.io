@@ -16,8 +16,9 @@ export type MomentumItem = {
 export const recentShipments: Shipment[] = [
   {
     id: 'ai-readiness-v010',
-    title: 'AI Readiness Diagnostic v0.1.0',
-    summary: 'Public evidence-first toolkit with CI, tests, and Apache-2.0 release.',
+    title: 'BBI AI Readiness Diagnostic Kit v0.1.0',
+    summary:
+      'Released with CI, CodeQL, Scorecard, typed checks, testing, and coverage.',
     evidence: [
       {
         label: 'Release',
@@ -27,29 +28,18 @@ export const recentShipments: Shipment[] = [
         label: 'Repository',
         url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit',
       },
+      {
+        label: 'CI',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/actions',
+      },
       {label: 'Documentation', url: '/docs/enterprise-ai/ai-readiness-diagnostic'},
-    ],
-  },
-  {
-    id: 'bbi-org-controls',
-    title: 'BBI organization engineering controls',
-    summary:
-      'Organization profile, community health, teams, rulesets, and Public Proof Gate baseline.',
-    evidence: [
-      {
-        label: 'Organization',
-        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
-      },
-      {
-        label: 'Org profile repo',
-        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/.github',
-      },
     ],
   },
   {
     id: 'bbi-roadmap',
     title: 'BBI Public Engineering Roadmap',
-    summary: 'Transparent backlog with status and proof-gate fields for public work.',
+    summary:
+      'Public execution roadmap with status, priority, risk, evidence, and proof gates.',
     evidence: [
       {
         label: 'Project board',
@@ -59,27 +49,31 @@ export const recentShipments: Shipment[] = [
   },
   {
     id: 'mtp-portfolio',
-    title: 'MTP technical portfolio release',
-    summary: 'Docusaurus portfolio with Pages deploy, CI, CodeQL, and public-proof boundaries.',
+    title: 'MTP Executive Technical Portfolio',
+    summary: 'Recruiter-facing architecture and technical-proof platform.',
     evidence: [
       {label: 'Live site', url: 'https://tmgilliam.github.io'},
       {
-        label: 'Release v0.1.0',
+        label: 'Release',
         url: 'https://github.com/Tmgilliam/tmgilliam.github.io/releases/tag/v0.1.0',
       },
       {label: 'Repository', url: 'https://github.com/Tmgilliam/tmgilliam.github.io'},
     ],
   },
   {
-    id: 'latest-architecture-article',
-    title: 'Latest architecture article',
-    summary: 'Evidence before implementation — public writing on governed delivery.',
+    id: 'bbi-engineering-controls',
+    title: 'BBI Engineering Controls v1',
+    summary:
+      'PR-only delivery, CODEOWNERS, security scanning, dependency controls, and release governance.',
     evidence: [
       {
-        label: 'Article',
-        url: '/blog/evidence-before-implementation',
+        label: 'Org profile / governance',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/.github',
       },
-      {label: 'Writing index', url: '/writing'},
+      {
+        label: 'Organization',
+        url: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC',
+      },
     ],
   },
 ];
@@ -87,12 +81,12 @@ export const recentShipments: Shipment[] = [
 export const momentumReleased: MomentumItem[] = [
   {
     id: 'm-kit',
-    title: 'AI Readiness Diagnostic v0.1.0',
+    title: 'AI Readiness Diagnostic Kit v0.1.0',
     href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit/releases/tag/v0.1.0',
   },
   {
     id: 'm-portfolio',
-    title: 'MTP technical portfolio',
+    title: 'MTP portfolio platform',
     href: 'https://tmgilliam.github.io',
   },
   {
@@ -102,25 +96,33 @@ export const momentumReleased: MomentumItem[] = [
   },
 ];
 
+export const momentumInReview: MomentumItem[] = [
+  {
+    id: 'm-controls-review',
+    title: 'Elite Engineering Controls v1',
+    href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/.github',
+  },
+  {
+    id: 'm-access-security',
+    title: 'Organization access and security baseline',
+    href: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
+  },
+];
+
 export const momentumInProgress: MomentumItem[] = [
+  {
+    id: 'm-bbios-ops',
+    title: 'BBIOS operational-readiness candidate',
+    privateLabel: 'Private system — source not public',
+  },
+];
+
+export const momentumPlanned: MomentumItem[] = [
   {
     id: 'm-interactive',
     title: 'Interactive AI Readiness demonstration',
     href: '/projects',
   },
-  {
-    id: 'm-controls',
-    title: 'Elite engineering controls review',
-    href: 'https://github.com/orgs/Brilliant-Brainstorm-Intelligence-LLC/projects/1',
-  },
-  {
-    id: 'm-bbios-ops',
-    title: 'BBIOS operational readiness candidate',
-    privateLabel: 'Private system — not publicly observable',
-  },
-];
-
-export const momentumPlanned: MomentumItem[] = [
   {
     id: 'm-agents',
     title: 'Governed Agent Execution Patterns',

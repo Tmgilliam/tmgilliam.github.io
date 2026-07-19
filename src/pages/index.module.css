@@ -45,8 +45,24 @@
   font-size: 1.2rem;
   max-width: 40rem;
   color: #c3ccd9;
-  margin: 0 0 1.75rem;
+  margin: 0 0 0.85rem;
   line-height: 1.55;
+}
+
+.heroSecondary {
+  font-size: 1rem;
+  max-width: 40rem;
+  color: #a6b2c4;
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.heroSupport {
+  margin: 1rem 0 0;
+  color: var(--mtp-gold);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .heroPortraitWrap {
@@ -96,10 +112,48 @@
   background: color-mix(in srgb, var(--mtp-navy) 8%, transparent);
 }
 
-.grid3 {
+.grid3,
+.grid4,
+.featuredGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.1rem;
+}
+
+.grid4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.featuredGrid {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.diagramStack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.diagram {
+  margin: 0;
+}
+
+.diagramCaption {
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.diagram svg {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+}
+
+.durableList {
+  columns: 2;
+  gap: 1.5rem;
+  margin: 1.5rem 0 0;
+  padding-left: 1.2rem;
 }
 
 .proofGrid {
@@ -269,12 +323,15 @@
   }
 
   .grid3,
+  .grid4,
+  .featuredGrid,
   .proofGrid,
   .shipmentGrid {
     grid-template-columns: 1fr;
   }
 
-  .domainList {
+  .domainList,
+  .durableList {
     columns: 1;
   }
 }
