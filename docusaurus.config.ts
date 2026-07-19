@@ -98,6 +98,7 @@ const config: Config = {
         {to: '/writing', label: 'Writing', position: 'left'},
         {to: '/about', label: 'About', position: 'left'},
         {to: '/bbi', label: 'BBI', position: 'left'},
+        {to: '/recognition', label: 'Recognition', position: 'left'},
         {
           href: 'https://github.com/Tmgilliam',
           label: 'GitHub',
@@ -136,6 +137,7 @@ const config: Config = {
             },
             {label: 'Writing', to: '/writing'},
             {label: 'Contact', to: '/contact'},
+            {label: 'Recognition', to: '/recognition'},
           ],
         },
         {
