@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
+import MissionControl from '@site/src/components/MissionControl';
 import ProjectCard from '@site/src/components/ProjectCard';
 import SectionHeading from '@site/src/components/SectionHeading';
 import {
@@ -47,6 +48,12 @@ const proofCards: ProofCard[] = [
     value: 'System boundaries, data flows, ADRs, security models, and tradeoffs.',
     href: '/architecture',
     cta: 'Inspect architecture',
+  },
+  {
+    title: 'Systems Map',
+    value: 'Interactive architecture explorer—responsibilities, tradeoffs, and evidence.',
+    href: '/architecture-explorer',
+    cta: 'Explore systems',
   },
   {
     title: 'Recent Shipments',
@@ -314,6 +321,8 @@ export default function Home(): ReactElement {
             </p>
           </div>
         </section>
+
+        <MissionControl />
 
         <section className={styles.section}>
           <div className="container">

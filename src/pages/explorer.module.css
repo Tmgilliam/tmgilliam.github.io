@@ -1,0 +1,128 @@
+.rootCard,
+.nodeCard,
+.detailCard {
+  background: color-mix(in srgb, var(--mtp-navy) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+[data-theme='light'] .rootCard,
+[data-theme='light'] .nodeCard,
+[data-theme='light'] .detailCard {
+  background: #fffdf8;
+}
+
+.rootCard {
+  margin-bottom: 1.25rem;
+}
+
+.nodeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.nodeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: inherit;
+  min-height: 10rem;
+  transition: border-color 0.15s ease;
+}
+
+.nodeCard:hover {
+  border-color: var(--mtp-gold);
+  text-decoration: none;
+}
+
+.nodeCard:focus-visible,
+.nodeButton:focus-visible,
+.nodeButtonActive:focus-visible {
+  outline: 2px solid var(--mtp-gold);
+  outline-offset: 3px;
+}
+
+.nodeMeta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status {
+  border: 1px solid color-mix(in srgb, var(--mtp-blue) 55%, transparent);
+  color: var(--mtp-blue);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.cta {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--mtp-gold);
+}
+
+.explorerLayout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.nodeRail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nodeButton,
+.nodeButtonActive {
+  text-align: left;
+  border-radius: 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+  background: color-mix(in srgb, var(--mtp-navy) 80%, transparent);
+  color: inherit;
+  padding: 0.75rem 0.9rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+[data-theme='light'] .nodeButton,
+[data-theme='light'] .nodeButtonActive {
+  background: #fffdf8;
+}
+
+.nodeButtonActive {
+  border-color: var(--mtp-gold);
+  box-shadow: inset 3px 0 0 var(--mtp-gold);
+}
+
+.detailLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.detailLinks a {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 996px) {
+  .explorerLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .nodeRail {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodeCard {
+    transition: none;
+  }
+}

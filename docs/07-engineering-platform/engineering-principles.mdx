@@ -1,0 +1,28 @@
+---
+title: Engineering Principles
+description: Public engineering principles for BBI and MTP—evidence first, human authority, privacy, governance, and verification.
+sidebar_position: 2
+tags: [engineering-principles, governance, evidence-first, responsible-ai]
+---
+
+# Engineering Principles
+
+These principles govern public engineering surfaces. They are not slogans; each maps to docs, gates, or ADRs you can inspect.
+
+| Principle                  | Meaning                                                              | Where to verify                                                                |
+| -------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Evidence First**         | Claims require code, tests, docs, releases, or labeled assumptions   | [ADR-004](../architecture-decisions/adr-004-evidence-first), Public Proof Gate |
+| **Human Authority**        | Consequential actions need clear ownership, approval, and escalation | [Governed agent systems](../enterprise-ai/governed-agent-systems)              |
+| **Privacy**                | Private systems and confidential data stay outside public proof      | [ADR-006](../architecture-decisions/adr-006-privacy-boundary)                  |
+| **Governance**             | Delivery controls beat ad-hoc heroics                                | [ADR-007](../architecture-decisions/adr-007-repository-governance)             |
+| **Verification**           | Passing builds are not proof of correct business behavior            | Quality gates, tests, receipts                                                 |
+| **Recoverability**         | Stop, restart, and restore without corrupting state                  | Ops readiness patterns (public-safe summaries only)                            |
+| **Observability**          | Status, logs, and evidence trails are first-class                    | Mission Control, shipments, CI                                                 |
+| **Operational Excellence** | Release discipline, honest maturity labels, deferred vanity          | Roadmap, recognition rules                                                     |
+
+## Anti-patterns we reject
+
+- Invented metrics and hard-coded contribution vanity
+- Planned features presented as complete
+- Private BBIOS/Nova/MLS/Myelin internals in public artifacts
+- Pay-to-display recognition without independent judging

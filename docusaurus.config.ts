@@ -98,7 +98,9 @@ const config: Config = {
       },
       items: [
         {to: '/projects', label: 'Projects', position: 'left'},
+        {to: '/ecosystem', label: 'Ecosystem', position: 'left'},
         {to: '/architecture', label: 'Architecture', position: 'left'},
+        {to: '/architecture-explorer', label: 'Systems Map', position: 'left'},
         {to: '/speaking', label: 'Speaking', position: 'left'},
         {to: '/docs/erp-transformation/', label: 'ERP Transformation', position: 'left'},
         {to: '/docs/enterprise-ai/', label: 'Enterprise AI', position: 'left'},
@@ -124,10 +126,16 @@ const config: Config = {
           title: 'Explore',
           items: [
             {label: 'Projects', to: '/projects'},
+            {label: 'Ecosystem', to: '/ecosystem'},
             {label: 'Architecture', to: '/architecture'},
+            {label: 'Systems Map', to: '/architecture-explorer'},
             {label: 'Speaking', to: '/speaking'},
             {label: 'Enterprise AI', to: '/docs/enterprise-ai/'},
             {label: 'ERP Transformation', to: '/docs/erp-transformation/'},
+            {
+              label: 'Engineering Platform',
+              to: '/docs/engineering-platform/',
+            },
           ],
         },
         {
@@ -141,6 +149,7 @@ const config: Config = {
               label: 'AI Readiness Kit',
               href: 'https://github.com/Brilliant-Brainstorm-Intelligence-LLC/bbi-ai-readiness-diagnostic-kit',
             },
+            {label: 'Architecture Decisions', to: '/docs/architecture-decisions/'},
             {label: 'Writing', to: '/writing'},
             {label: 'Contact', to: '/contact'},
             {
