@@ -1,0 +1,32 @@
+---
+title: 'ADR-005: Human Approval for Consequential Action'
+description: Consequential automated actions require human authority boundaries before execution.
+sidebar_position: 6
+tags: [adr, human-in-the-loop, governed-agents]
+---
+
+# ADR-005: Human Approval for Consequential Action
+
+## Status
+
+**Accepted** — July 2026
+
+## Context
+
+Agent and automation systems create risk when tools execute without explicit authorization, escalation, or evidence.
+
+## Decision
+
+Public architecture for governed agents must define:
+
+1. What actions are consequential
+2. Who may approve them
+3. What evidence is retained
+4. How denial/missing approval blocks execution
+5. How verification confirms outcomes
+
+Private BBIOS implements these ideas internally; public docs describe patterns without exposing private source.
+
+## Consequences
+
+Slower autonomous demos; stronger enterprise and responsible-AI alignment.

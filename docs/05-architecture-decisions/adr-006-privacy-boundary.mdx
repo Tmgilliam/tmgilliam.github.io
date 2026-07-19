@@ -1,0 +1,29 @@
+---
+title: 'ADR-006: Privacy Boundary'
+description: Separate public proof from private operating systems and confidential material.
+sidebar_position: 7
+tags: [adr, privacy, security, public-proof]
+---
+
+# ADR-006: Privacy Boundary
+
+## Status
+
+**Accepted** — July 2026
+
+## Context
+
+BBIOS and related private systems inform methodology but must not leak into public repositories, awards packs, or portfolio pages.
+
+## Decision
+
+1. Public content is sanitize-or-omit
+2. Private systems may appear only as labeled architecture summaries
+3. No Nova/MLS/Myelin internals, client data, or credentials in public artifacts
+4. Awards evidence packs inherit the same boundary
+
+Supplements [ADR-002](./adr-002-public-proof-boundary).
+
+## Consequences
+
+Less “full access” theater for recruiters; more durable trust and legal/safety posture.

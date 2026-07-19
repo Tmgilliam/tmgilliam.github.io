@@ -17,32 +17,37 @@ Verify implementation status in the repository README, tags, and CI—not from t
 
 :::
 
-## Problem framing (portfolio)
+## Problem
 
 Distribution and fulfillment operations need early signals when orders or lines are **likely to miss promise dates**—so planners can intervene, reprioritize, or communicate proactively.
 
-A delay-risk model is only as trustworthy as:
+## Environment
 
-- Label definition aligned to operational truth
-- Feature timestamps that respect causality (no leakage from future events)
-- Coverage across product, channel, and location segments
-- Human workflow when the model disagrees with experienced planners
+Portfolio-safe context only: ERP-adjacent order and fulfillment signals represented with **synthetic or sanitized** samples in the public repository. No named client, employer, or private warehouse telemetry.
 
-## Intended system shape (architecture reference)
+## Constraints
+
+- Labels must align to operational truth (promise vs. actual), not convenience proxies
+- Feature timestamps must respect causality (no leakage from future events)
+- Coverage must be inspectable across product, channel, and location segments
+- Humans remain the authority when the model disagrees with experienced planners
+- Public artifacts must never include private ERP extracts
+
+## Architecture
 
 ```text
 ERP-adjacent sources (sanitized / synthetic in public repo)
-           â†“
+           |
    Feature engineering pipeline
-           â†“
+           |
    Train / evaluate / register model
-           â†“
-   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-   â†“                             â†“
-Batch scoring               Real-time scoring API
-   â†“                             â†“
-Operational report          App / agent consumer (authorized)
-           â†“
+           |
+     +-----+-----+
+     |           |
+Batch scoring   Real-time scoring API
+     |           |
+Ops report      App / agent consumer (authorized)
+           |
    Human review + override + evidence log
 ```
 
@@ -80,6 +85,32 @@ Suitable for daily planner workflows and email/BI consumption. Emphasizes throug
 Suitable for cart or order-entry assist **only** with human oversight and fallback when features are missing.
 
 Both modes require schema validation, model version headers, and structured error responses.
+
+## Tradeoffs
+
+| Choice                          | Benefit                                   | Cost                                         |
+| ------------------------------- | ----------------------------------------- | -------------------------------------------- |
+| Batch scoring first             | Audit snapshots, planner-friendly cadence | Less useful for cart-time assist             |
+| Real-time API later             | Low-latency assist for authorized apps    | Feature completeness and fallback complexity |
+| Human override + evidence log   | Recoverability and trust                  | Throughput and workflow design cost          |
+| Synthetic/sanitized public data | Privacy-safe portfolio proof              | Not a substitute for production validation   |
+
+## Alternatives considered
+
+- **Rules-only delay flags** — faster to ship, weaker generalization across segments
+- **Black-box vendor scoring** — less inspectable features, harder human override story
+- **Full autonomous replanning** — rejected; risk scores inform humans, they do not decide
+
+## Outcome
+
+Public portfolio status only: architecture and code evidence live in the repository. **No production ROI, client outcome, or deployment claim** is asserted on this page. Treat outcomes as _evidence-gated_—present only when releases, tests, and docs in the repo support them.
+
+## Lessons learned
+
+- Label and causality discipline matter more than model novelty for operational trust
+- Segment-weak coverage is a first-class failure mode, not a footnote
+- Readiness and data quality gates ([AI Readiness Diagnostic](../enterprise-ai/ai-readiness-diagnostic), [ERP Data Quality](../erp-transformation/erp-data-quality)) reduce wasted ML spend
+- Portfolio pages must separate **intended architecture** from **implemented evidence**
 
 ## Evaluation honesty
 
