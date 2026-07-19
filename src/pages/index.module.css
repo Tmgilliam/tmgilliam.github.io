@@ -104,6 +104,68 @@
   letter-spacing: 0.02em;
 }
 
+.researchFoundation {
+  background:
+    radial-gradient(circle at 8% 20%, rgba(224, 190, 104, 0.1), transparent 45%),
+    linear-gradient(165deg, #121821 0%, #182334 60%, #121821 100%);
+  border-bottom: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+  padding: 2.75rem 0;
+  color: #e8edf5;
+}
+
+.researchInner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 52rem;
+}
+
+.researchIcon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 0.65rem;
+  display: grid;
+  place-items: center;
+  color: var(--mtp-gold);
+  background: color-mix(in srgb, var(--mtp-gold) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 35%, transparent);
+  flex-shrink: 0;
+}
+
+.researchEyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--mtp-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.researchCopy :global(h2) {
+  margin: 0 0 0.75rem;
+  color: #f4f4f0;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.researchLead {
+  margin: 0 0 1.25rem;
+  color: #c3ccd9;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.researchActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.researchActions :global(.button) {
+  min-height: 2.75rem;
+}
+
 .section {
   padding: 3.5rem 0;
 }
@@ -322,6 +384,10 @@
 
   .heroPortrait {
     width: min(100%, 12rem);
+  }
+
+  .researchInner {
+    grid-template-columns: 1fr;
   }
 
   .grid3,
