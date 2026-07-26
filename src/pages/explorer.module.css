@@ -19,7 +19,7 @@
 
 .nodeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -116,8 +116,29 @@
   }
 
   .nodeRail {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    max-height: none;
+  }
+
+  .nodeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .nodeCard {
+    min-height: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .rootCard,
+  .nodeCard,
+  .detailCard {
+    padding: 1rem;
+  }
+
+  .nodeButton,
+  .nodeButtonActive {
+    width: 100%;
   }
 }
 
