@@ -187,7 +187,7 @@
 }
 
 .featuredGrid {
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
 }
 
 .diagramStack {
@@ -197,6 +197,7 @@
 
 .diagram {
   margin: 0;
+  min-width: 0;
 }
 
 .diagramCaption {
@@ -211,6 +212,59 @@
   border: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
 }
 
+.diagramMobile {
+  display: none;
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  list-style: none;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--mtp-gold) 28%, transparent);
+  background: #141a24;
+  color: #f4f4f0;
+}
+
+.diagramMobile li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.45rem 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(224, 190, 104, 0.15);
+}
+
+.diagramMobile li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.diagramMobile .stepNum {
+  flex: 0 0 auto;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--mtp-gold);
+  color: var(--mtp-gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.diagramNote {
+  display: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  color: #a6b2c4;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  background: transparent;
+  border: none;
+  list-style: none;
+}
+
 .durableList {
   columns: 2;
   gap: 1.5rem;
@@ -220,7 +274,7 @@
 
 .proofGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
   gap: 1.1rem;
 }
 
@@ -289,7 +343,7 @@
 
 .shipmentGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
   gap: 1.1rem;
 }
 
@@ -373,8 +427,13 @@
 }
 
 @media screen and (max-width: 996px) {
+  .hero {
+    padding: 2.75rem 0 2.25rem;
+  }
+
   .heroInner {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .heroPortraitWrap {
@@ -383,11 +442,41 @@
   }
 
   .heroPortrait {
-    width: min(100%, 12rem);
+    width: min(100%, 11rem);
+  }
+
+  .heroTitle {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+  }
+
+  .heroRole,
+  .heroLead {
+    font-size: 1.05rem;
+  }
+
+  .ctaRow :global(.button),
+  .researchActions :global(.button) {
+    flex: 1 1 100%;
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .authorityLine {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .researchFoundation {
+    padding: 2rem 0;
   }
 
   .researchInner {
     grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 2.5rem 0;
   }
 
   .grid3,
@@ -401,6 +490,41 @@
   .domainList,
   .durableList {
     columns: 1;
+  }
+
+  .diagram svg {
+    display: none;
+  }
+
+  .diagramMobile {
+    display: block;
+  }
+
+  .diagramNote {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hero {
+    padding: 2.25rem 0 1.75rem;
+  }
+
+  .heroSupport {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .pillarCard,
+  .statusColumn,
+  .proofCard,
+  .shipmentCard,
+  .bbiosCard {
+    padding: 1rem;
+  }
+
+  .proofCard {
+    min-height: 0;
   }
 }
 

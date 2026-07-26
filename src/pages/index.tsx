@@ -183,11 +183,31 @@ function PublicProofDiagram(): ReactElement {
           Private systems and unapproved claims stay outside the boundary
         </text>
       </svg>
+      <ol className={styles.diagramMobile} aria-label="Public-proof publishing boundary steps">
+        {stages.map((stage, index) => (
+          <li key={stage.label}>
+            <span className={styles.stepNum}>{index + 1}</span>
+            <span>{stage.label}</span>
+          </li>
+        ))}
+      </ol>
+      <p className={styles.diagramNote}>
+        Private systems and unapproved claims stay outside the boundary
+      </p>
     </figure>
   );
 }
 
 function BbiosLoopDiagram(): ReactElement {
+  const stages = [
+    'Capture',
+    'Route',
+    'Prioritize',
+    'Execute',
+    'Verify',
+    'Update',
+    'Continue',
+  ];
   return (
     <figure className={styles.diagram} aria-labelledby="diagram-bbios-loop">
       <figcaption id="diagram-bbios-loop" className={styles.diagramCaption}>
@@ -199,15 +219,7 @@ function BbiosLoopDiagram(): ReactElement {
         aria-label="Capture Route Prioritize Execute Verify Update Continue"
       >
         <rect width="720" height="160" rx="12" fill="#141A24" />
-        {[
-          'Capture',
-          'Route',
-          'Prioritize',
-          'Execute',
-          'Verify',
-          'Update',
-          'Continue',
-        ].map((label, index) => {
+        {stages.map((label, index) => {
           const x = 18 + index * 100;
           return (
             <g key={label}>
@@ -247,6 +259,17 @@ function BbiosLoopDiagram(): ReactElement {
           Architecture summary only — private system, repository not public
         </text>
       </svg>
+      <ol className={styles.diagramMobile} aria-label="BBIOS sanitized operating loop steps">
+        {stages.map((label, index) => (
+          <li key={label}>
+            <span className={styles.stepNum}>{index + 1}</span>
+            <span>{label}</span>
+          </li>
+        ))}
+      </ol>
+      <p className={styles.diagramNote}>
+        Architecture summary only — private system, repository not public
+      </p>
     </figure>
   );
 }
